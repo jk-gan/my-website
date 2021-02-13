@@ -1,8 +1,7 @@
 import Head from 'next/head'
+import Link from 'next/link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGithub, faLinkedin, faTwitter } from '@fortawesome/free-brands-svg-icons'
-
-import styles from '../styles/Home.module.css'
 
 export default function Home() {
   const url = "https://jk-gan.vercel.app"
@@ -35,8 +34,8 @@ export default function Home() {
               <a href="https://www.linkedin.com/in/ganjk"><FontAwesomeIcon className="ml-2 mr-4 hover:text-gray-400" icon={faLinkedin} size="1x" /></a>
             </div>
             <div>
-              <a className="ml-4 mr-2 hover:text-gray-400" href="">Blog</a>
-              <a className="mx-2 hover:text-gray-400" href="">Contact</a>
+              <Link href="/blog"><a className="ml-4 mr-2 hover:text-gray-400">Blog</a></Link>
+              <Link href=""><a className="mx-2 hover:text-gray-400" href="">Contact</a></Link>
             </div>
           </div>
         </div>
