@@ -6,12 +6,21 @@ import styles from '../styles/Home.module.css'
 
 export default function Home() {
   const url = "https://jk-gan.vercel.app"
+  const title = "Gan Jun Kai"
+  const description = "Jun Kai writes about software engineering and programming"
 
   return (
     <>
       <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta charSet="utf-8" />
+        <meta name="description" content={description} />
         <title>Gan Jun Kai's website</title>
+
         <meta property="og:url" content={url} />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
       </Head>
       <div className="flex items-center justify-center h-screen container mx-auto px-5 2xl:w-6/12 md:w-11/12">
         <div>
