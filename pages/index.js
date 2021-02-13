@@ -30,9 +30,9 @@ export default function Home() {
           <p className="text-left text-lg text-gray-400">Full stack developer · Elixir · Rust · React</p>
           <div className="flex items-center mt-3 text-gray-300 divide-x">
             <div>
-              <a href="https://github.com/jk-gan"><FontAwesomeIcon className="mr-2 hover:text-gray-400" icon={faGithub} size="2x" /></a>
-              <a href="https://twitter.com/jk_gan"><FontAwesomeIcon className="mx-2 hover:text-gray-400" icon={faTwitter} size="2x" /></a>
-              <a href="https://www.linkedin.com/in/ganjk"><FontAwesomeIcon className="ml-2 mr-4 hover:text-gray-400" icon={faLinkedin} size="2x" /></a>
+              <a href="https://github.com/jk-gan"><FontAwesomeIcon className="mr-2 hover:text-gray-400" icon={faGithub} size="1x" /></a>
+              <a href="https://twitter.com/jk_gan"><FontAwesomeIcon className="mx-2 hover:text-gray-400" icon={faTwitter} size="1x" /></a>
+              <a href="https://www.linkedin.com/in/ganjk"><FontAwesomeIcon className="ml-2 mr-4 hover:text-gray-400" icon={faLinkedin} size="1x" /></a>
             </div>
             <div>
               <a className="ml-4 mr-2 hover:text-gray-400" href="">Blog</a>
