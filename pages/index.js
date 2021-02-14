@@ -38,7 +38,7 @@ export default function Home() {
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
       </Head>
-      <div className="flex items-center justify-center h-screen container mx-auto px-5 2xl:w-6/12 md:w-11/12">
+      <div className="flex items-center justify-center h-screen container mx-auto px-5 xl:w-6/12 md:w-8/12 sm:w-10/12">
         <div>
           <motion.h1 
             className="text-left font-bold text-5xl mb-3"
@@ -64,30 +64,48 @@ export default function Home() {
           >
             Full stack developer · Elixir · Rust · React
           </motion.p>
-          <motion.div className="flex items-center mt-3 text-gray-300 divide-x" variants={fadeIn} initial="hidden" animate="visible" transition={{ delayChildren: 0.2, staggerChildren: 0.25 }}>
+          <motion.div className="flex items-center mt-3 text-gray-300 divide-x" variants={fadeIn} initial="hidden" animate="visible" transition={{ delayChildren: 0.3, staggerChildren: 0.27, ease: "easeInOut" }}>
             <div>
               <motion.a 
                 href="https://github.com/jk-gan"
                 variants={fadeIn}
+                transition={{ duration: 0.8 }}
               >
                 <FontAwesomeIcon className="mr-2 hover:text-gray-400" icon={faGithub} size="1x" />
               </motion.a>
               <motion.a 
                 href="https://twitter.com/jk_gan"
                 variants={fadeIn}
+                transition={{ duration: 0.8 }}
               >
                  <FontAwesomeIcon className="mx-2 hover:text-gray-400" icon={faTwitter} size="1x" />
               </motion.a>
               <motion.a 
                 href="https://www.linkedin.com/in/ganjk"
                 variants={fadeIn}
+                transition={{ duration: 0.8 }}
               >
                 <FontAwesomeIcon className="ml-2 mr-4 hover:text-gray-400" icon={faLinkedin} size="1x" />
               </motion.a>
             </div>
             <div>
-              <Link href="/blog"><motion.a className="ml-4 mr-2 cursor-pointer hover:text-gray-400" variants={fadeIn}>Blog</motion.a></Link>
-              <motion.a className="mx-2 hover:text-gray-400" href="mailto:kuhn96@gmail.com" variants={fadeIn}>Contact</motion.a>
+              <Link href="/blog">
+                <motion.a 
+                  className="ml-4 mr-2 cursor-pointer hover:text-gray-400" 
+                  variants={fadeIn}
+                  transition={{ duration: 0.8 }}
+                >
+                  Blog
+                </motion.a>
+              </Link>
+              <motion.a 
+                className="mx-2 hover:text-gray-400" 
+                href="mailto:kuhn96@gmail.com" 
+                variants={fadeIn}
+                transition={{ duration: 0.8 }}
+              >
+                Contact
+              </motion.a>
             </div>
           </motion.div>
         </div>

@@ -21,7 +21,7 @@ const Blog = (props) => {
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
       </Head>
-      <div className="flex h-screen container mx-auto mt-10 px-5 2xl:w-6/12 md:w-11/12">
+      <div className="flex h-screen container mx-auto mt-10 px-5 xl:w-6/12 md:w-8/12 sm:w-10/12">
           <div className="divide-y-2 w-full">
               <div>
                 <h1 className="text-left font-bold text-4xl mb-3">Articles</h1>
