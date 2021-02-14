@@ -22,18 +22,19 @@ const Blog = (props) => {
         <meta property="og:description" content={description} />
       </Head>
       <div className="flex h-screen container mx-auto mt-10 px-5 2xl:w-6/12 md:w-11/12">
-          <div className="divide-y-2">
+          <div className="divide-y-2 w-full">
               <div>
                 <h1 className="text-left font-bold text-4xl mb-3">Articles</h1>
               </div>
               <div>
-                <ul className="mt-5">
+                <ul className="mt-8">
                     {props.posts.map((post, _index) => {
                         return (
                             <li className="mb-5" key={post.id}>
                                 <Link href={`/blog/${post.slug}`}>
                                     <a className="text-2xl font-semibold hover:underline">{post.title}</a>
                                 </Link>
+                                <p className="text-base text-gray-500">{post.subtitle}</p>
                                 <p className="text-sm text-gray-400">{dayjs(post.date).format('MMMM D, YYYY')}</p>
                             </li>
                         )
