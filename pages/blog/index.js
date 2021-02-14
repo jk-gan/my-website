@@ -1,11 +1,28 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import dayjs from 'dayjs'
+import { motion } from 'framer-motion'
 
 const Blog = (props) => {
   const url = "https://jk-gan.vercel.app/blog"
   const title = "Blog - Gan Jun Kai"
   const description = "Jun Kai writes about software engineering and programming"
+
+  const fadeIn = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1 }
+  }
+
+  const fadeInEaseInOut = {
+    hidden: { opacity: 0 },
+    visible: { 
+      opacity: 1,
+      transition: {
+        duration: 0.7,
+        ease: "easeInOut",
+      }
+    },
+  }
 
   return (
     <>
@@ -27,19 +44,19 @@ const Blog = (props) => {
                 <h1 className="text-left font-bold text-4xl mb-3">Articles</h1>
               </div>
               <div>
-                <ul className="mt-8">
+                <motion.ul className="mt-8" variants={fadeIn} initial="hidden" animate="visible" transition={{ delayChildren: 0.1, staggerChildren: 0.2 }}>
                     {props.posts.map((post, _index) => {
                         return (
-                            <li className="mb-5" key={post.id}>
+                            <motion.li className="mb-5" key={post.id} variants={fadeInEaseInOut}>
                                 <Link href={`/blog/${post.slug}`}>
                                     <a className="text-2xl font-semibold hover:underline">{post.title}</a>
                                 </Link>
                                 <p className="text-base text-gray-500">{post.subtitle}</p>
                                 <p className="text-sm text-gray-400">{dayjs(post.date).format('MMMM D, YYYY')}</p>
-                            </li>
+                            </motion.li>
                         )
                     })}
-                </ul>
+                </motion.ul>
               </div>
           </div>
       </div>

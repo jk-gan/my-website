@@ -1,11 +1,11 @@
 ---
 title: "Rust: The Programming Language"
 subtitle: "A language empowering everyone to build reliable and efficient software."
-slug: rust
-image: "/rust/logo.jpeg"
+slug: rust-the-programming-language
+image: "/rust-the-programming-language/logo.jpeg"
 date: "2019-08-18"
 ---
-![Rust logo](/rust/logo.jpeg)
+![Rust logo](/rust-the-programming-language/logo.jpeg)
 
 Recently I took a serious amount of time to work on some Rust projects. I also shared a lot of Rust related articles on my social media. Few people come to ask me about Rust and why am I using it. I think this is a good chance to write down my opinions about [Rust](https://www.rust-lang.org/).
 
@@ -24,7 +24,7 @@ Rust is an open-source systems programming language developed by Mozilla that fo
 
 Developers are using Rust to create a wide range of new software applications, such as game engines, operating systems, file systems, browser components and simulation engines for virtual reality.
 
-![Rust Hello World](/rust/rust-hello-world.png)
+![Rust Hello World](/rust-the-programming-language/rust-hello-world.png)
 <figcaption class="text-sm text-center text-gray-400 -mt-4">Hello world in Rust</figcaption>
 
 ## But why Rust?
@@ -35,7 +35,7 @@ Developers are using Rust to create a wide range of new software applications, s
 
 > Rust is the most loved language four years in a row in Stack Overflow Developer Survey
 
-![Why Rust?](/rust/why-rust.png)
+![Why Rust?](/rust-the-programming-language/why-rust.png)
 <figcaption class="text-sm text-center text-gray-400 -mt-4">From Rust official website</figcaption>
 
 ### Memory safety without Garbage Collection
@@ -46,10 +46,10 @@ Humans tend to make mistakes. Developers are not an exception. Especially in thi
 
 Among all different kinds of software errors, memory-related errors are the most complex and unpredictable classes of errors because you cannot easily write tests to catch them. It may stay in the code for years, like a ticking bomb waiting for its hour.
 
-![Linux CVEs](/rust/linux-memory-bugs.png)
+![Linux CVEs](/rust-the-programming-language/linux-memory-bugs.png)
 <figcaption class="text-sm text-center text-gray-400 -mt-4">~51% of the CVEs are concurrency and memory safety issues in Linux kernel (<a href="https://phil-opp.github.io/talk-konstanz-may-2018/#14">source</a>)</figcaption>
 
-![Window CVEs](/rust/window-memory-bugs.png)
+![Window CVEs](/rust-the-programming-language/window-memory-bugs.png)
 <figcaption class="text-sm text-center text-gray-400 -mt-4">~70% of the vulnerabilities Microsoft assigns a CVE each year continue to be memory safety issues (<a href="https://msrc-blog.microsoft.com/2019/07/16/a-proactive-approach-to-more-secure-code/">source</a>)</figcaption>
 
 Unlike other system languages which most memory errors are discovered in running time, these memory errors are fundamentally impossible to get in the safe subset of Rust. The compiler flags those issues and forces them to be fixed before the program ever runs.
@@ -70,7 +70,7 @@ Rust also come with concurrency built-in and this is what makes Rust’s ownersh
 
 Rust compiler is very strict. It does the most significant job to prevent errors in Rust programs. It **analyzes the code at compile-time** and issues warnings, if the code does not follow memory management rules or lifetime annotations correctly. This makes Rust a little bit hard to write but it is extremely satisfying once it compiles.
 
-![Rust compiler message](/rust/compiler-error.png)
+![Rust compiler message](/rust-the-programming-language/compiler-error.png)
 <figcaption class="text-sm text-center text-gray-400 -mt-4">This is an example which compiler complaining the code is against the ownership rule</figcaption>
 
 You can pair program with the compiler and be sure to have crafted a solid application afterward. It teaches you how to write better program even in other languages.
@@ -131,7 +131,7 @@ Other great resources:
 ---
 I can’t cover all the awesome features that Rust provided. If you’re interested to learn more about Rust, please give it a shot. I hope you enjoy it.
 
-![Ferris](/rust/ferris.gif)
+![Ferris](/rust-the-programming-language/ferris.gif)
 <figcaption class="text-sm text-center text-gray-400 -mt-4">Ferris (unofficial mascot of the Rust Community)</figcaption>
 
 ---
