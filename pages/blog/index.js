@@ -1,9 +1,8 @@
 import Head from 'next/head'
 import Link from 'next/link'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faGithub, faLinkedin, faTwitter } from '@fortawesome/free-brands-svg-icons'
+import dayjs from 'dayjs'
 
-export default function Blog(props) {
+const Blog = (props) => {
   const url = "https://jk-gan.vercel.app/blog"
   const title = "Blog - Gan Jun Kai"
   const description = "Jun Kai writes about software engineering and programming"
@@ -23,19 +22,24 @@ export default function Blog(props) {
         <meta property="og:description" content={description} />
       </Head>
       <div className="flex h-screen container mx-auto mt-10 px-5 2xl:w-6/12 md:w-11/12">
-          <div>
-            <h1 className="text-left font-bold">Blog list</h1>
-            <ul>
-                {props.posts.map((post, index) => {
-                    return (
-                        <li key={post.id}>
-                            <Link href={`/blog/${post.slug}`}>
-                                <a>{post.title}</a>
-                            </Link>
-                        </li>
-                    )
-                })}
-            </ul>
+          <div className="divide-y-2">
+              <div>
+                <h1 className="text-left font-bold text-4xl mb-3">Articles</h1>
+              </div>
+              <div>
+                <ul className="mt-5">
+                    {props.posts.map((post, _index) => {
+                        return (
+                            <li className="mb-5" key={post.id}>
+                                <Link href={`/blog/${post.slug}`}>
+                                    <a className="text-2xl font-semibold hover:underline">{post.title}</a>
+                                </Link>
+                                <p className="text-sm text-gray-400">{dayjs(post.date).format('MMMM D, YYYY')}</p>
+                            </li>
+                        )
+                    })}
+                </ul>
+              </div>
           </div>
       </div>
     </>
@@ -45,7 +49,7 @@ export default function Blog(props) {
 export async function getStaticProps() {
     const fs = require('fs')
     const matter = require('gray-matter')
-    const { v4:uuid } = require('uuid')
+    const { v4: uuid } = require('uuid')
 
     const files = fs.readdirSync(`${process.cwd()}/posts`, 'utf-8')
 
@@ -60,8 +64,11 @@ export async function getStaticProps() {
 
             return { ...data, id: uuid() }
         })
+        .sort((a, b) => new Date(b.date) - new Date(a.date))
 
     return {
         props: { posts },
     }
 }
+
+export default Blog
