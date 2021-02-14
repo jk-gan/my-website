@@ -16,32 +16,34 @@ const renderers = {
   }
 
 const BlogPostPage = (props) => {
-    const { title, slug, date, content } = props.post
-    const url = `https://jk-gan.vercel.app/blog/${slug}`
-    const description = "Jun Kai writes about software engineering and programming"
+    const domain = 'https://jk-gan.vercel.app'
+    const { title, slug, date, content, subtitle, image = `${domain}/bg.jpeg` } = props.post
+    const url = `${domain}/blog/${slug}`
+    const imageURL = image.includes("http") || image.includes("https") ? image : `${domain}/${image}`
 
     return (
         <>
             <Head>
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <meta charSet="utf-8" />
-                <meta name="description" content={description} />
+                <meta name="description" content={subtitle} />
                 <title>{title} - Gan Jun Kai</title>
 
                 <meta property="og:url" content={url} />
-                <meta property="og:image" content="https://jk-gan.vercel.app/bg.jpeg" />
+                <meta property="og:image" content={imageURL} />
                 <meta property="og:type" content="website" />
                 <meta property="og:title" content={title} />
-                <meta property="og:description" content={description} />
+                <meta property="og:description" content={subtitle} />
             </Head>
-            <div className="flex container mx-auto my-10 px-5 2xl:w-6/12 md:w-11/12">
-                <div>
-                    <div className="mb-10">
-                        <h1 className="text-3xl font-bold mb-1">{props.post.title}</h1>
-                        <p className="text-base text-gray-400">{dayjs(date).format('MMMM D, YYYY')}</p>
+            <div className="flex container mx-auto mt-10 mb-16 px-5 2xl:w-6/12 md:w-11/12">
+                <div className="">
+                    <div className="mb-5">
+                        <h1 className="text-5xl font-semibold mb-2">{title}</h1>
+                        <h3 className="opacity-80 text-2xl text-gray-500 font-medium mb-1">{subtitle}</h3>
+                        <p className="opacity-80 text-sm text-gray-400">{dayjs(date).format('MMMM D, YYYY')}</p>
                     </div>
                     <ReactMarkdown 
-                        className="prose prose-lg" 
+                        className="prose prose-lg mt-10" 
                         children={content} 
                         renderers={renderers} 
                         allowDangerousHtml 
@@ -49,10 +51,10 @@ const BlogPostPage = (props) => {
                 </div>
             </div>
         </>
-    )
-}
+        )
+    }
 
-export const getStaticProps = async (context) => {
+    export const getStaticProps = async (context) => {
     const fs = require('fs')
     // const highlight = require('remark-highlight.js')
     const matter = require('gray-matter')

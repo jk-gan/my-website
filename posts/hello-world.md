@@ -1,9 +1,8 @@
 ---
-title: "Rust: The Programming Language"
+title: "Hello World"
 subtitle: "A language empowering everyone to build reliable and efficient software."
-slug: rust
-image: "/rust/logo.jpeg"
-date: "2019-08-18"
+slug: hello-world
+date: "2021-08-18"
 ---
 ![Rust logo](/rust/logo.jpeg)
 
