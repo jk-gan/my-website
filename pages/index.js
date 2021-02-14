@@ -64,26 +64,26 @@ export default function Home() {
           >
             Full stack developer · Elixir · Rust · React
           </motion.p>
-          <motion.div className="flex items-center mt-3 text-gray-300 divide-x" variants={fadeIn} initial="hidden" animate="visible" transition={{ delayChildren: 0.3, staggerChildren: 0.27, ease: "easeInOut" }}>
+          <motion.div className="flex items-center mt-3 text-gray-300 divide-x" variants={fadeIn} initial="hidden" animate="visible" transition={{ delayChildren: 0.25, staggerChildren: 0.27, ease: "easeInOut" }}>
             <div>
               <motion.a 
                 href="https://github.com/jk-gan"
                 variants={fadeIn}
-                transition={{ duration: 0.8 }}
+                transition={{ duration: 0.6 }}
               >
                 <FontAwesomeIcon className="mr-2 hover:text-gray-400" icon={faGithub} size="1x" />
               </motion.a>
               <motion.a 
                 href="https://twitter.com/jk_gan"
                 variants={fadeIn}
-                transition={{ duration: 0.8 }}
+                transition={{ duration: 0.6 }}
               >
                  <FontAwesomeIcon className="mx-2 hover:text-gray-400" icon={faTwitter} size="1x" />
               </motion.a>
               <motion.a 
                 href="https://www.linkedin.com/in/ganjk"
                 variants={fadeIn}
-                transition={{ duration: 0.8 }}
+                transition={{ duration: 0.6 }}
               >
                 <FontAwesomeIcon className="ml-2 mr-4 hover:text-gray-400" icon={faLinkedin} size="1x" />
               </motion.a>
@@ -93,7 +93,7 @@ export default function Home() {
                 <motion.a 
                   className="ml-4 mr-2 cursor-pointer hover:text-gray-400" 
                   variants={fadeIn}
-                  transition={{ duration: 0.8 }}
+                  transition={{ duration: 0.6 }}
                 >
                   Blog
                 </motion.a>
@@ -102,7 +102,7 @@ export default function Home() {
                 className="mx-2 hover:text-gray-400" 
                 href="mailto:kuhn96@gmail.com" 
                 variants={fadeIn}
-                transition={{ duration: 0.8 }}
+                transition={{ duration: 0.6 }}
               >
                 Contact
               </motion.a>
