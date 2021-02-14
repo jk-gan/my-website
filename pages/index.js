@@ -35,7 +35,7 @@ export default function Home() {
             </div>
             <div>
               <Link href="/blog"><a className="ml-4 mr-2 hover:text-gray-400">Blog</a></Link>
-              <Link href=""><a className="mx-2 hover:text-gray-400" href="">Contact</a></Link>
+              <a className="mx-2 hover:text-gray-400" href="mailto:kuhn96@gmail.com">Contact</a>
             </div>
           </div>
         </div>
