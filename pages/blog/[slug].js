@@ -47,15 +47,16 @@ const BlogPostPage = (props) => {
                 <meta property="og:title" content={title} />
                 <meta property="og:description" content={subtitle} />
             </Head>
-            <div className="flex container mx-auto mt-10 mb-16 px-5 xl:w-6/12 md:w-8/12 sm:w-10/12">
-                <motion.div variants={fadeInEaseInOut} initial="hidden" animate="visible">
+            <div className="flex mx-auto mt-10 mb-16 px-5 w-11/12 xl:w-6/12 lg:w-7/12 md:w-8/12">
+                <motion.div className="w-full" variants={fadeInEaseInOut} initial="hidden" animate="visible">
                     <div className="mb-5">
                         <h1 className="text-4xl font-semibold mb-2">{title}</h1>
                         <h3 className="opacity-80 text-2xl text-gray-500 font-medium mb-1">{subtitle}</h3>
                         <p className="opacity-80 text-sm text-gray-400">{dayjs(date).format('MMMM D, YYYY')}</p>
                     </div>
                     <ReactMarkdown 
-                        className="prose prose-lg mt-10" 
+                        className="prose prose-lg md:prose-xl max-w-none mt-10" 
+
                         children={content} 
                         renderers={renderers} 
                         allowDangerousHtml 
