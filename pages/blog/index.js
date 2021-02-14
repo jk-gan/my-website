@@ -41,10 +41,17 @@ const Blog = (props) => {
       <div className="flex h-screen container mx-auto mt-10 px-5 xl:w-6/12 md:w-8/12 sm:w-10/12">
           <div className="divide-y-2 w-full">
               <div>
-                <h1 className="text-left font-bold text-4xl mb-3">Articles</h1>
+                <motion.h1 
+                  className="text-left font-bold text-4xl mb-3"
+                  variants={fadeInEaseInOut}
+                  initial="hidden"
+                  animate="visible"
+                >
+                  Articles
+                </motion.h1>
               </div>
               <div>
-                <motion.ul className="mt-8" variants={fadeIn} initial="hidden" animate="visible" transition={{ delayChildren: 0.1, staggerChildren: 0.2 }}>
+                <motion.ul className="mt-8" variants={fadeIn} initial="hidden" animate="visible" transition={{ delayChildren: 0.2, staggerChildren: 0.2 }}>
                     {props.posts.map((post, _index) => {
                         return (
                             <motion.li className="mb-5" key={post.id} variants={fadeInEaseInOut}>

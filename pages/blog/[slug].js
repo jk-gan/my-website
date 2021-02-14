@@ -2,6 +2,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import dayjs from 'dayjs'
 import ReactMarkdown from 'react-markdown'
+import { motion } from 'framer-motion'
 // import highlight from 'remark-highlight.js'
 
 const renderers = {
@@ -21,6 +22,17 @@ const BlogPostPage = (props) => {
     const url = `${domain}/blog/${slug}`
     const imageURL = image.includes("http") || image.includes("https") ? image : `${domain}/${image}`
 
+    const fadeInEaseInOut = {
+        hidden: { opacity: 0 },
+        visible: { 
+            opacity: 1,
+            transition: {
+                duration: 0.5,
+                ease: "easeInOut",
+            }
+        },
+    }
+
     return (
         <>
             <Head>
@@ -36,7 +48,7 @@ const BlogPostPage = (props) => {
                 <meta property="og:description" content={subtitle} />
             </Head>
             <div className="flex container mx-auto mt-10 mb-16 px-5 xl:w-6/12 md:w-8/12 sm:w-10/12">
-                <div className="">
+                <motion.div variants={fadeInEaseInOut} initial="hidden" animate="visible">
                     <div className="mb-5">
                         <h1 className="text-4xl font-semibold mb-2">{title}</h1>
                         <h3 className="opacity-80 text-2xl text-gray-500 font-medium mb-1">{subtitle}</h3>
@@ -48,7 +60,7 @@ const BlogPostPage = (props) => {
                         renderers={renderers} 
                         allowDangerousHtml 
                     />
-                </div>
+                </motion.div>
             </div>
         </>
         )
