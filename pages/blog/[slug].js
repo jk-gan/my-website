@@ -47,7 +47,7 @@ const BlogPostPage = (props) => {
                 <meta property="og:title" content={title} />
                 <meta property="og:description" content={subtitle} />
             </Head>
-            <div className="flex mx-auto mt-10 mb-16 px-5 w-11/12 xl:w-6/12 lg:w-7/12 md:w-8/12">
+            <div className="flex mx-auto mt-10 mb-16 px-5 w-11/12 xl:w-6/12 lg:w-7/12 md:w-9/12">
                 <motion.div className="w-full" variants={fadeInEaseInOut} initial="hidden" animate="visible">
                     <div className="mb-5">
                         <h1 className="text-4xl font-semibold mb-2">{title}</h1>

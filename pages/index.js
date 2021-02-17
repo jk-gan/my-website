@@ -38,7 +38,7 @@ export default function Home() {
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
       </Head>
-      <div className="flex items-center justify-center h-screen container mx-auto px-5 xw-11/12 xl:w-6/12 lg:w-7/12 md:w-8/12">
+      <div className="flex items-center justify-center h-screen container mx-auto px-5 xw-11/12 xl:w-6/12 lg:w-7/12 md:w-9/12">
         <div>
           <motion.h1 
             className="text-left font-bold text-5xl mb-3"
