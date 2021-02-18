@@ -8,6 +8,23 @@ module.exports = {
         'mv-2': '#9400FF',
         'mv-3': '#003FFF',
       },
+      typography: (theme) => ({
+        DEFAULT: {
+          css: {
+            // a: {
+            //   color: theme(`colors.blue.600`),
+            //   textDecoration: `none`,
+            //   "&:hover": {
+            //     textDecoration: `underline`,
+            //   },
+            // },
+            // "code::before": false,
+            // "code::after": false,
+            "blockquote p:first-of-type::before": false,
+            "blockquote p:last-of-type::after": false,
+          },
+        },
+      })
     },
   },
   variants: {

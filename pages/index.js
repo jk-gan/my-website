@@ -49,7 +49,7 @@ export default function Home() {
             Gan Jun Kai
           </motion.h1>
           <motion.p 
-            className="text-left font-medium text-2xl text-gray-500 mb-1"
+            className="text-left font-semibold text-2xl text-gray-500 mb-1"
             variants={fadeInEaseIn}
             initial="hidden"
             animate="visible"

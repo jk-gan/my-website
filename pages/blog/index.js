@@ -38,7 +38,7 @@ const Blog = (props) => {
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
       </Head>
-      <div className="flex h-screen container mx-auto mt-10 px-5 w-11/12 2xl:w-6/12 xl:w-7/12 lg:w-8/12 md:w-10/12">
+      <div className="flex container mx-auto mt-16 w-11/12 2xl:w-6/12 xl:w-7/12 lg:w-8/12 md:w-10/12">
           <div className="divide-y-2 w-full">
               <div>
                 <motion.h1 
