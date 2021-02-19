@@ -30,6 +30,14 @@ module.exports = {
             // "pre code::after": {
             //   "padding-right": "unset"
             // },
+            a: { 
+              color: theme("colors.blue.700"),
+              textDecoration: "none",
+              '&:hover': {
+                textDecoration: "underline",
+                color: theme("colors.blue.500")
+              },
+            },
             code: {
               backgroundColor: theme("colors.grey.100"),
               color: "#DD1144",

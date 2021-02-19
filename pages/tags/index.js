@@ -3,9 +3,9 @@ import Link from 'next/link'
 import dayjs from 'dayjs'
 import { motion } from 'framer-motion'
 
-const Blog = ({ posts }) => {
+const Blog = (props) => {
   const url = "https://jk-gan.vercel.app/blog"
-  const title = "Blog - Gan Jun Kai"
+  const title = "Tags - Gan Jun Kai"
   const description = "Jun Kai writes about software engineering and programming"
 
   const fadeIn = {
@@ -30,7 +30,7 @@ const Blog = ({ posts }) => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta charSet="utf-8" />
         <meta name="description" content={description} />
-        <title>Articles - Gan Jun Kai</title>
+        <title>Tags - Gan Jun Kai</title>
 
         <meta property="og:url" content={url} />
         <meta property="og:image" content="https://jk-gan.vercel.app/bg.jpeg" />
@@ -47,28 +47,19 @@ const Blog = ({ posts }) => {
                   initial="hidden"
                   animate="visible"
                 >
-                  Articles
+                  Tags
                 </motion.h1>
               </div>
               <div>
                 <motion.ul className="mt-8" variants={fadeIn} initial="hidden" animate="visible" transition={{ delayChildren: 0.2, staggerChildren: 0.2 }}>
-                    {posts.map((post, _index) => {
+                    {props.tags.map((tag, _index) => {
                         return (
-                            <motion.li className="mb-10" key={post.id} variants={fadeInEaseInOut}>
-                                <Link href={`/blog/${post.slug}`}>
-                                    <a className="text-2xl mb-2 font-semibold hover:text-blue-700">{post.title}</a>
+                            <motion.li className="mb-4" key={tag} variants={fadeInEaseInOut}>
+                                <Link href={`/tags/${tag}`}>
+                                    <a className="text-2xl mb-2 font-semibold hover:text-blue-700">#{tag}</a>
                                 </Link>
-                                <p className="text-base text-gray-500 mb-1">{post.subtitle || '...'}</p>
-                                <div className="mb-2">
-                                  {post.tags.map((tag) => {
-                                    return (
-                                      <Link href={`/tags/${tag}`}>
-                                        <a className="text-sm mr-2 py-1 px-2 rounded-3xl bg-gray-100 hover:bg-gray-200">#{tag}</a>
-                                      </Link>
-                                    )
-                                  })}
-                                </div>
-                                <p className="text-sm text-gray-400">{dayjs(post.date).format('MMMM D, YYYY')}</p>
+                                {/* <p className="text-base text-gray-500 mb-1">{post.subtitle || '...'}</p>
+                                <p className="text-sm text-gray-400">{dayjs(post.date).format('MMMM D, YYYY')}</p> */}
                             </motion.li>
                         )
                     })}
@@ -87,21 +78,22 @@ export async function getStaticProps() {
 
     const files = fs.readdirSync(`${process.cwd()}/posts`, 'utf-8')
 
-    const posts = files
+    const tags = files
         .filter((fn) => fn.endsWith('.md'))
-        .map((fn) => {
+        .flatMap((fn) => {
             const path = `${process.cwd()}/posts/${fn}`
             const rawContent = fs.readFileSync(path, {
                 encoding: 'utf-8',
             })
             const { data } = matter(rawContent)
+            const { tags } = data
 
-            return { ...data, id: uuid() }
+            return tags || []
         })
-        .sort((a, b) => new Date(b.date) - new Date(a.date))
+        .filter((item, i, arr) => arr.indexOf(item) === i)
 
     return {
-        props: { posts },
+        props: { tags },
     }
 }
 
