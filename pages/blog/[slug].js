@@ -1,14 +1,16 @@
+import { useEffect } from 'react'
 import Head from 'next/head'
 import Image from 'next/image'
 import dayjs from 'dayjs'
 import ReactMarkdown from 'react-markdown'
 import { motion } from 'framer-motion'
+import Prism from 'Prismjs';
 // import highlight from 'remark-highlight.js'
+// import prism from 'remark-prism'
 
 const renderers = {
     image: image => {
       return (
-        // <div style={{ paddingTop: "56.25%", position: "relative" }}>
         <div className="relative aspect-w-16 aspect-h-9">
             <Image className="absolute left-0 top-0 w-full h-auto" src={image.src} alt={image.alt} layout="fill" objectFit="contain" quality={80} />
         </div>
@@ -21,6 +23,10 @@ const BlogPostPage = (props) => {
     const { title, slug, date, content, subtitle, image = `${domain}/bg.jpeg` } = props.post
     const url = `${domain}/blog/${slug}`
     const imageURL = image.includes("http") || image.includes("https") ? image : `${domain}/${image}`
+
+    useEffect(() => {
+        Prism.highlightAll()
+    }, []);
 
     const fadeInEaseInOut = {
         hidden: { opacity: 0 },
@@ -56,9 +62,9 @@ const BlogPostPage = (props) => {
                     </div>
                     <ReactMarkdown 
                         className="prose prose-lg md:prose-xl max-w-none mt-10" 
-
                         children={content} 
                         renderers={renderers} 
+                        // plugins={[prism]}
                         allowDangerousHtml 
                     />
                 </motion.div>

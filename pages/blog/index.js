@@ -30,7 +30,7 @@ const Blog = (props) => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta charSet="utf-8" />
         <meta name="description" content={description} />
-        <title>Blog - Gan Jun Kai</title>
+        <title>Articles - Gan Jun Kai</title>
 
         <meta property="og:url" content={url} />
         <meta property="og:image" content="https://jk-gan.vercel.app/bg.jpeg" />
@@ -54,11 +54,11 @@ const Blog = (props) => {
                 <motion.ul className="mt-8" variants={fadeIn} initial="hidden" animate="visible" transition={{ delayChildren: 0.2, staggerChildren: 0.2 }}>
                     {props.posts.map((post, _index) => {
                         return (
-                            <motion.li className="mb-5" key={post.id} variants={fadeInEaseInOut}>
+                            <motion.li className="mb-10" key={post.id} variants={fadeInEaseInOut}>
                                 <Link href={`/blog/${post.slug}`}>
-                                    <a className="text-2xl font-semibold hover:underline">{post.title}</a>
+                                    <a className="text-2xl mb-2 font-semibold hover:text-blue-700">{post.title}</a>
                                 </Link>
-                                <p className="text-base text-gray-500">{post.subtitle}</p>
+                                <p className="text-base text-gray-500 mb-1">{post.subtitle || '...'}</p>
                                 <p className="text-sm text-gray-400">{dayjs(post.date).format('MMMM D, YYYY')}</p>
                             </motion.li>
                         )
