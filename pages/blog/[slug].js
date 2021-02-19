@@ -4,9 +4,7 @@ import Image from 'next/image'
 import dayjs from 'dayjs'
 import ReactMarkdown from 'react-markdown'
 import { motion } from 'framer-motion'
-import Prism from 'Prismjs';
-// import highlight from 'remark-highlight.js'
-// import prism from 'remark-prism'
+import Prism from 'prismjs';
 
 const renderers = {
     image: image => {
@@ -64,7 +62,6 @@ const BlogPostPage = (props) => {
                         className="prose prose-lg md:prose-xl max-w-none mt-10" 
                         children={content} 
                         renderers={renderers} 
-                        // plugins={[prism]}
                         allowDangerousHtml 
                     />
                 </motion.div>
