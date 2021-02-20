@@ -4,7 +4,15 @@ import Image from 'next/image'
 import dayjs from 'dayjs'
 import ReactMarkdown from 'react-markdown'
 import { motion } from 'framer-motion'
-import Prism from 'prismjs';
+import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter'
+// import js from 'react-syntax-highlighter/dist/cjs/languages/prism/javascript'
+// import rust from 'react-syntax-highlighter/dist/cjs/languages/prism/rust';
+// import elixir from 'react-syntax-highlighter/dist/cjs/languages/prism/elixir';
+import tomorrow from 'react-syntax-highlighter/dist/cjs/styles/prism/tomorrow'
+
+// SyntaxHighlighter.registerLanguage('js', js);
+// SyntaxHighlighter.registerLanguage('rust', rust);
+// SyntaxHighlighter.registerLanguage('elixir', elixir);
 
 const renderers = {
     image: image => {
@@ -14,6 +22,9 @@ const renderers = {
         </div>
       )
     },
+    code: ({language, value}) => {
+        return <SyntaxHighlighter style={tomorrow} language={language} children={value} />
+    }
   }
 
 const BlogPostPage = (props) => {
@@ -21,10 +32,6 @@ const BlogPostPage = (props) => {
     const { title, slug, date, content, subtitle, image = `${domain}/bg.jpeg` } = props.post
     const url = `${domain}/blog/${slug}`
     const imageURL = image.includes("http") || image.includes("https") ? image : `${domain}/${image}`
-
-    useEffect(() => {
-        Prism.highlightAll()
-    }, []);
 
     const fadeInEaseInOut = {
         hidden: { opacity: 0 },
