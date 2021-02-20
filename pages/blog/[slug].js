@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import Head from 'next/head'
 import Image from 'next/image'
 import dayjs from 'dayjs'
@@ -6,13 +5,19 @@ import ReactMarkdown from 'react-markdown'
 import { motion } from 'framer-motion'
 import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter'
 import js from 'react-syntax-highlighter/dist/cjs/languages/prism/javascript'
+import jsx from 'react-syntax-highlighter/dist/cjs/languages/prism/jsx'
 import rust from 'react-syntax-highlighter/dist/cjs/languages/prism/rust';
-import elixir from 'react-syntax-highlighter/dist/cjs/languages/prism/elixir';
+import markdown from 'react-syntax-highlighter/dist/cjs/languages/prism/markdown';
+// import elixir from 'react-syntax-highlighter/dist/cjs/languages/prism/elixir';
+import bash from 'react-syntax-highlighter/dist/cjs/languages/prism/bash';
 import tomorrow from 'react-syntax-highlighter/dist/cjs/styles/prism/tomorrow'
 
 SyntaxHighlighter.registerLanguage('js', js);
+SyntaxHighlighter.registerLanguage('jsx', jsx);
 SyntaxHighlighter.registerLanguage('rust', rust);
-SyntaxHighlighter.registerLanguage('elixir', elixir);
+SyntaxHighlighter.registerLanguage('bash', bash);
+SyntaxHighlighter.registerLanguage('markdown', markdown);
+// SyntaxHighlighter.registerLanguage('elixir', elixir);
 
 const renderers = {
     image: image => {
@@ -77,7 +82,7 @@ const BlogPostPage = (props) => {
         )
     }
 
-    export const getStaticProps = async (context) => {
+export const getStaticProps = async (context) => {
     const fs = require('fs')
     // const highlight = require('remark-highlight.js')
     const matter = require('gray-matter')

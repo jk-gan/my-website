@@ -12,6 +12,7 @@ class MyDocument extends Document {
         <Head>
             <link rel="preconnect" href="https://fonts.gstatic.com" />
             <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;700&display=swap" rel="stylesheet" /> 
+            <script async defer data-domain="jkgan.com" src="https://plausible.io/js/plausible.js"></script>
         </Head>
         <body className="font-serif">
           <Main />
