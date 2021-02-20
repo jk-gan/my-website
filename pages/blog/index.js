@@ -58,16 +58,18 @@ const Blog = ({ posts }) => {
                                 <Link href={`/blog/${post.slug}`}>
                                     <a className="text-2xl mb-2 font-semibold hover:text-blue-700">{post.title}</a>
                                 </Link>
-                                <p className="text-base text-gray-500 mb-1">{post.subtitle || '...'}</p>
-                                <div className="mb-2">
+                                <p className="text-base text-gray-500 mb-2">{post.subtitle || '...'}</p>
+                                <ul className="flex flex-wrap">
                                   {post.tags.map((tag) => {
                                     return (
-                                      <Link href={`/tags/${tag}`}>
-                                        <a className="text-sm mr-2 py-1 px-2 rounded-3xl bg-gray-100 hover:bg-gray-200">#{tag}</a>
-                                      </Link>
+                                      <li key={tag} className="mb-2">
+                                        <Link href={`/tags/${tag}`}>
+                                          <a className="text-sm mr-2 py-1 px-2 rounded-xl bg-gray-100 hover:bg-gray-200">#{tag}</a>
+                                        </Link>
+                                      </li>
                                     )
                                   })}
-                                </div>
+                                </ul>
                                 <p className="text-sm text-gray-400">{dayjs(post.date).format('MMMM D, YYYY')}</p>
                             </motion.li>
                         )
