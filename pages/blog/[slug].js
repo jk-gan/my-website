@@ -5,14 +5,14 @@ import dayjs from 'dayjs'
 import ReactMarkdown from 'react-markdown'
 import { motion } from 'framer-motion'
 import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter'
-// import js from 'react-syntax-highlighter/dist/cjs/languages/prism/javascript'
-// import rust from 'react-syntax-highlighter/dist/cjs/languages/prism/rust';
-// import elixir from 'react-syntax-highlighter/dist/cjs/languages/prism/elixir';
+import js from 'react-syntax-highlighter/dist/cjs/languages/prism/javascript'
+import rust from 'react-syntax-highlighter/dist/cjs/languages/prism/rust';
+import elixir from 'react-syntax-highlighter/dist/cjs/languages/prism/elixir';
 import tomorrow from 'react-syntax-highlighter/dist/cjs/styles/prism/tomorrow'
 
-// SyntaxHighlighter.registerLanguage('js', js);
-// SyntaxHighlighter.registerLanguage('rust', rust);
-// SyntaxHighlighter.registerLanguage('elixir', elixir);
+SyntaxHighlighter.registerLanguage('js', js);
+SyntaxHighlighter.registerLanguage('rust', rust);
+SyntaxHighlighter.registerLanguage('elixir', elixir);
 
 const renderers = {
     image: image => {
