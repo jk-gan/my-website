@@ -275,7 +275,7 @@ These generated files are in the `out` folder including `foo-bar.html` and `hell
 ![File output](/building-blog-nextjs-tailwindcss/output.png)
 
 
-Run the sercer and open [`http://localhost:3000/blog/hello-world`](http://locahost:3000/blog/hello-world):
+Run the server and open [`http://localhost:3000/blog/hello-world`](http://locahost:3000/blog/hello-world):
 ![Hello World Page](/building-blog-nextjs-tailwindcss/hello-world.png)
 
 Now we want to style the generated HTML elements properly, e.g. the `<backquote>` in this case. We can probably style each of the HTML elements using `tailwindcss` ourselves but this could be a tedious task. Luckily, Tailwind provides a very easy way to automatically style the HTML elements for us using [Tailwind Typography](https://github.com/tailwindlabs/tailwindcss-typography).
