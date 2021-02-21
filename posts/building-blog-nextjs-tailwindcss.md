@@ -7,7 +7,7 @@ tags: ["guide", "nextjs", "tailwindcss"]
 
 This website is built using [Next.js](https://nextjs.org/) and [Tailwindcss](https://tailwindcss.com/) and it's been a blast. I want to write down what I've learned and what I did. So in this article, we're gonna build a simple blog website. This website will allow user to write the article in Markdown.
 
-Next.js is a popular React framework and it supports Static Generation which is perfect for our use case. For those who don't know, [Static Generation](https://nextjs.org/docs/basic-features/pages#static-generation-recommended) is a process to generate HTML page at **build time**. This HTML will then be reused on each request and can be cached by a CDN for performance.
+Next.js is a popular **React** framework and it supports Static Generation which is perfect for our use case. For those who don't know, [Static Generation](https://nextjs.org/docs/basic-features/pages#static-generation-recommended) is a process to generate HTML page at **build time**. This HTML will then be reused on each request and can be cached by a CDN for performance.
 
 
 ### Project Setup
@@ -21,18 +21,19 @@ v15.9.0
 ```
 
 #### Create a new Next.js project
-Let's create a Next.js project using `create-next-app` and start the dev server:
+Let's create a new Next.js project using `create-next-app` and start the dev server:
 ```bash
 > npx create-next-app nextjs-blog
 > cd nextjs-blog
+# start the dev server
 > npm run dev
 ```
 
-Open [`http://localhost:3000`](http://localhost:3000) in your browser, you will see this default Next.js info page:
+Open [http://localhost:3000](http://localhost:3000) in your browser, you will see this default Next.js info page:
 ![Home page](/building-blog-nextjs-tailwindcss/new-project.png)
 
 #### Install all required packages
-Run this in terminal:
+Now we have a new Next.js project running, but we still need to install some packages to ease our job on building this website. Run this command in terminal:
 ```bash
 > npm install -D gray-matter uniqid remark remark-html tailwindcss@latest postcss@latest autoprefixer@latest @tailwindcss/typography dayjs
 ```
@@ -68,27 +69,45 @@ to:
 - `dayjs`: to format the date value
 
 #### Config Tailwindcss
-Generate `tailwind.config.js` and `postcss.config.js` files in our project:
+Next, we have to generate `tailwind.config.js` and `postcss.config.js` files in our project:
 ```bash
 npx tailwindcss init -p
 ```
 
-Open the `./styles/global.css` file in the project, use the @tailwind directive to include Tailwind's `base`, `components`, and `utilities` styles, replacing the original file contents:
+Open the `./styles/global.css` file in the project, use the `@tailwind` directive to include Tailwind's `base`, `components`, and `utilities` styles, replacing the original file contents:
 ```css
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 ```
 
-### Project structure
-Now we start to design our website route, Next.js is using [file-system based router](https://nextjs.org/docs/routing/introduction): 
+Open `./tailwindcss.config.js` file, add `@tailwindcss/typography` to the plugins list:
+```diff
+module.exports = {
+  ...
+  variants: {
+    extend: {},
+  },
+-  plugins: [],
++  plugins: [require('@tailwindcss/typography')],
+}
+```
+
+Start the server again to make sure **everything is still working**.
+
+### Project route
+The website we're going to build will have these pages:
+- `/blog`: the blog posts list
+- `/blog/hello-world`: the **Hello World** article
+- `/blog/foo-bar`: the **Foo Bar** article
+
+Let's see how we can do this. Next.js has a [file-system based router](https://nextjs.org/docs/routing/introduction). When a file is added to the `./pages` directory it's automatically available as a route: 
 - `./pages/index.js` -> `/`
 - `./pages/blog/index.js` -> `/blog`
+- `./pages/blog/analytics.js` -> `/blog/analytics`
 
-We want to display our blog post list on the `/blog` page, therefore we'll write the logic in `./pages/blog/index.js` file later. 
-
-How about our blog post pages, e.g. `/blog/building-blog-nextjs-tailwindcss` or `/blog/learning-rust`? Next.js can handle dynamic route easily since [Next.js 9](https://nextjs.org/blog/next-9#dynamic-route-segments):
-- `./pages/blog/[slug].js` -> will match `/blog/1`, `/blog/hello-world`
+Nobody want to write a new page, e.g. `./pages/blog/hello-world.js`, every time when we have a new article. Therefore, we need a more scalable way to handle this. Since the article page's logic is the same, we can use Next.js [Dynamic Routes](https://nextjs.org/docs/routing/dynamic-routes) to handle the same route pattern with single file:
+- `./pages/blog/[slug].js` -> will match `/blog/1`, `/blog/hello-world`, `/blog/foo-bar`
 
 Let's create both files:
 ```bash
@@ -98,7 +117,7 @@ Let's create both files:
 > touch pages/blog/index.js pages/blog/\[slug\].js
 ```
 
-We also need a folder to store all our Markdown files. Let's create a `posts` folder and few blog posts:
+We also need a folder to store all our Markdown files (`.md`). Let's create a `./posts` folder and few articles:
 ```bash
 # create posts folder
 > mkdir posts
@@ -134,7 +153,10 @@ function foo() {
 ````
 
 ### Blog Engine
-Now we want to start writing our blog engine. This blog engine will read all `.md` files in `./posts/` folder and generate all static HTML at **build time**. Let's go to `./pages/blog/index.js` and start to create the function to display the blog post list:
+Now we can start writing our blog engine. The purpose of the blog engine is to read all `.md` files in `./posts` folder and generate static HTML at **build time**. 
+
+#### Blog Posts List page
+Let's go to `./pages/blog/index.js` and start to create the function to display the blog posts list:
 ```js
 import Link from 'next/link'
 import dayjs from 'dayjs'
@@ -182,11 +204,17 @@ export async function getStaticProps() {
 }
 ```
 
-We `export` an `async` `getStaicProps` function here, this function will get called at build time. In the function we are reading all the `.md` files and sort them in descending order by the `date` value so the newest post will be showed at the top. The `Blog` component will receive the `posts` as props because we return them in `getStaicProps` function.
+The `getStaticProps` function will get called at build time. In the function we are reading all the `.md` files and sort them in descending order by the `date` value so the newest post is showed at the top. The `Blog` component will receive the `posts` as props because we return them in `getStaicProps` function.
 
+Start the dev server and open [http://localhost:3000/blog](http://localhost:3000/blog), you can now see this page show all our articles:
 ![Blog page](/building-blog-nextjs-tailwindcss/blog.png)
 
-In order to display our blog posts on the correct page accordingly, we need to read the `.md` file based on the `slug` value from the URL, and also generate different HTML for each page. In `./posts/[slug].js`:
+#### Article Page
+In order to display our articles on the correct page accordingly, we need to read the `.md` file based on the `slug` value from the URL, and also generate different HTML for each page.
+- `/blog/hello-world`: the `slug` value is `hello-world`, so it should display the article from `./posts/hello-world.md`
+- `/blog/foo-bar`: the `slug` value is `foo-bar`, so it should display the article from `./posts/foo-bar.md`
+
+Let's write the logic in `./posts/[slug].js`:
 ```jsx
 import dayjs from 'dayjs'
 
@@ -255,7 +283,7 @@ In `getStaticProps` function, we use `remark` and `remark-html` to parse `.md` f
 
 We also use another function provided by Next.js called `getStaticPaths`. When we `export` an `async` `getStaticPaths` function from a dynamic page (`./pages/blog/[slug].js` in this case), this function will get called at build time and generate the HTML file accordingly.
 
-Let's check the file generated from our codes so far. Change this in `package.json` file:
+Let's check the file generated from our codes so far. Add `next export` command in `package.json` file:
 ```diff
   ...
   "scripts": {
@@ -271,14 +299,15 @@ then run in terminal:
 > npm run build
 ```
 
-These generated files are in the `out` folder including `foo-bar.html` and `hello-world.html`:
+These generated files are in the `out` folder including `foo-bar.html` and `hello-world.html` because of the `getStaticPaths` function:
 ![File output](/building-blog-nextjs-tailwindcss/output.png)
 
 
-Run the server and open [`http://localhost:3000/blog/hello-world`](http://locahost:3000/blog/hello-world):
+Run the server and open [`http://localhost:3000/blog/hello-world`](http://localhost:3000/blog/hello-world). We can see the content of the article now:
 ![Hello World Page](/building-blog-nextjs-tailwindcss/hello-world.png)
 
-Now we want to style the generated HTML elements properly, e.g. the `<backquote>` in this case. We can probably style each of the HTML elements using `tailwindcss` ourselves but this could be a tedious task. Luckily, Tailwind provides a very easy way to automatically style the HTML elements for us using [Tailwind Typography](https://github.com/tailwindlabs/tailwindcss-typography).
+#### Style the Generated HTML
+As you may have noticed that our content is not styled properly, e.g. the `<backquote>` in this case. Tailwind provides a very easy way to automatically style the HTML elements for us using [Tailwind Typography](https://github.com/tailwindlabs/tailwindcss-typography).
 
 All we have to do is to add `prose` class in `./posts/[slug].js`:
 ```diff
@@ -298,10 +327,12 @@ export default function BlogPostPage(props) {
 // ...
 ```
 
-The `<backquote>` element now looks good in `/blog/hello-world`:
+The `<backquote>` element now looks good in [http://localhost:3000/blog/hello-world](http://localhost:3000/blog/hello-world):
 ![Hello World Page after styling](/building-blog-nextjs-tailwindcss/hello-world-prose.png)
 
-The code block in `/blog/foo-bar` is also styled nicely:
+The code block in [http://localhost:3000/blog/foo-bar](http://localhost:3000/blog/foo-bar) is also styled nicely:
 ![Foo Bar Page after styling](/building-blog-nextjs-tailwindcss/foo-bar-prose.png)
 
 That completes this simple guide on building a blog with Next.js and Tailwindcss. Now you are ready to show the world what you've done by deploying this blog using [Vercel](https://vercel.com/) or [Netlify](https://www.netlify.com/). Cheer!
+
+You can check the source codes [here](https://github.com/jk-gan/nextjs-blog).
