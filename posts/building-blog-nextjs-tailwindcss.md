@@ -1,6 +1,7 @@
 ---
 title: "Building a blog with Next.js + Tailwindcss"
 slug: building-blog-nextjs-tailwindcss
+image: "/building-blog-nextjs-tailwindcss/bg.jpeg" # Photo by Jess Bailey on Unsplash
 date: "2021-02-21"
 tags: ["guide", "nextjs", "tailwindcss"]
 ---
