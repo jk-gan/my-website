@@ -67,11 +67,11 @@ const BlogPostPage = (props) => {
                 <motion.div className="w-full" variants={fadeInEaseInOut} initial="hidden" animate="visible">
                     <div className="mb-5">
                         <h1 className="text-4xl font-semibold mb-2">{title}</h1>
-                        <h3 className="opacity-80 text-2xl text-gray-500 font-medium mb-1">{subtitle}</h3>
-                        <p className="opacity-80 text-sm text-gray-400">{dayjs(date).format('MMMM D, YYYY')}</p>
+                        <h3 className="opacity-80 text-2xl text-blueGray-500 font-medium mb-1">{subtitle}</h3>
+                        <p className="opacity-80 text-sm text-blueGray-400">{dayjs(date).format('MMMM D, YYYY')}</p>
                     </div>
                     <ReactMarkdown 
-                        className="prose prose-lg md:prose-xl max-w-none mt-10" 
+                        className="prose prose-lg max-w-none mt-10" 
                         children={content} 
                         renderers={renderers} 
                         allowDangerousHtml 

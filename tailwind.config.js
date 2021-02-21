@@ -1,4 +1,5 @@
 const defaultTheme = require('tailwindcss/defaultTheme')
+const colors = require('tailwindcss/colors')
 
 module.exports = {
   purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
@@ -9,10 +10,8 @@ module.exports = {
         'mv-1': '#FB00FF',
         'mv-2': '#9400FF',
         'mv-3': '#003FFF',
-        grey: {
-          100: "#F5F7FA",
-          1000: "#1F2933"
-        },
+        cyan: colors.cyan,
+        blueGray: colors.blueGray,
       },
       fontFamily: theme => ({
         'serif': ['Merriweather', ...defaultTheme.fontFamily.serif],
@@ -20,27 +19,16 @@ module.exports = {
       typography: (theme) => ({
         DEFAULT: {
           css: {
-            // pre: {
-            //   color: theme("colors.grey.1000"),
-            //   backgroundColor: theme("colors.grey.100")
-            // },
-            // "pre code::before": {
-            //   "padding-left": "unset"
-            // },
-            // "pre code::after": {
-            //   "padding-right": "unset"
-            // },
             a: { 
-              color: theme("colors.blue.700"),
               textDecoration: "none",
+              borderBottom: `2px solid ${theme("colors.cyan.400")}`,
               '&:hover': {
-                textDecoration: "underline",
-                color: theme("colors.blue.500")
+                color: theme("colors.cyan.400"),
               },
             },
             code: {
-              backgroundColor: theme("colors.grey.100"),
-              color: "#DD1144",
+              backgroundColor: theme("colors.blueGray.100"),
+              color: theme("colors.cyan.700"),
               fontWeight: "400",
               "border-radius": "0.25rem"
             },

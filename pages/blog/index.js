@@ -56,21 +56,21 @@ const Blog = ({ posts }) => {
                         return (
                             <motion.li className="mb-10" key={post.id} variants={fadeInEaseInOut}>
                                 <Link href={`/blog/${post.slug}`}>
-                                    <a className="text-2xl mb-2 font-semibold hover:text-blue-700">{post.title}</a>
+                                    <a className="text-2xl mb-2 font-semibold hover:text-cyan-400">{post.title}</a>
                                 </Link>
-                                <p className="text-base text-gray-500 mb-2">{post.subtitle || '...'}</p>
+                                <p className="text-base text-blueGray-500 mb-2">{post.subtitle || '...'}</p>
                                 <ul className="flex flex-wrap">
                                   {post.tags.map((tag) => {
                                     return (
                                       <li key={tag} className="mb-2">
                                         <Link href={`/tags/${tag}`}>
-                                          <a className="text-sm mr-2 py-1 px-2 rounded-xl bg-gray-100 hover:bg-gray-200">#{tag}</a>
+                                          <a className="text-sm mr-2 py-1 px-2 rounded-xl bg-blueGray-100 hover:bg-blueGray-200">#{tag}</a>
                                         </Link>
                                       </li>
                                     )
                                   })}
                                 </ul>
-                                <p className="text-sm text-gray-400">{dayjs(post.date).format('MMMM D, YYYY')}</p>
+                                <p className="text-sm text-blueGray-400">{dayjs(post.date).format('MMMM D, YYYY')}</p>
                             </motion.li>
                         )
                     })}

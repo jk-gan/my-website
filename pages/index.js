@@ -49,7 +49,7 @@ export default function Home() {
             Gan Jun Kai
           </motion.h1>
           <motion.p 
-            className="text-left font-semibold text-2xl text-gray-500 mb-1"
+            className="text-left font-semibold text-2xl text-blueGray-500 mb-1"
             variants={fadeInEaseIn}
             initial="hidden"
             animate="visible"
@@ -57,41 +57,41 @@ export default function Home() {
              Making the web better and building the World's Most Advanced Education Platform at <a href="https://www.mindvalley.com" className="bg-clip-text text-transparent bg-gradient-to-r from-mv-1 viw-mv-2 to-mv-3">Mindvalley</a>
           </motion.p>
           <motion.p 
-            className="text-left text-lg text-gray-400"
+            className="text-left text-lg text-blueGray-400"
             variants={fadeInEaseIn}
             initial="hidden"
             animate="visible"
           >
             Full stack developer · Elixir · Rust · React
           </motion.p>
-          <motion.div className="flex items-center mt-3 text-gray-300 divide-x" variants={fadeIn} initial="hidden" animate="visible" transition={{ delayChildren: 0.25, staggerChildren: 0.27, ease: "easeInOut" }}>
+          <motion.div className="flex items-center mt-3 text-blueGray-300 divide-x" variants={fadeIn} initial="hidden" animate="visible" transition={{ delayChildren: 0.25, staggerChildren: 0.27, ease: "easeInOut" }}>
             <div>
               <motion.a 
                 href="https://github.com/jk-gan"
                 variants={fadeIn}
                 transition={{ duration: 0.6 }}
               >
-                <FontAwesomeIcon className="mr-2 hover:text-gray-400" icon={faGithub} size="1x" />
+                <FontAwesomeIcon className="mr-2 hover:text-blueGray-400" icon={faGithub} size="1x" />
               </motion.a>
               <motion.a 
                 href="https://twitter.com/jk_gan"
                 variants={fadeIn}
                 transition={{ duration: 0.6 }}
               >
-                 <FontAwesomeIcon className="mx-2 hover:text-gray-400" icon={faTwitter} size="1x" />
+                 <FontAwesomeIcon className="mx-2 hover:text-blueGray-400" icon={faTwitter} size="1x" />
               </motion.a>
               <motion.a 
                 href="https://www.linkedin.com/in/ganjk"
                 variants={fadeIn}
                 transition={{ duration: 0.6 }}
               >
-                <FontAwesomeIcon className="ml-2 mr-4 hover:text-gray-400" icon={faLinkedin} size="1x" />
+                <FontAwesomeIcon className="ml-2 mr-4 hover:text-blueGray-400" icon={faLinkedin} size="1x" />
               </motion.a>
             </div>
             <div>
               <Link href="/blog">
                 <motion.a 
-                  className="ml-4 mr-2 cursor-pointer hover:text-gray-400" 
+                  className="ml-4 mr-2 cursor-pointer hover:text-blueGray-400" 
                   variants={fadeIn}
                   transition={{ duration: 0.6 }}
                 >
@@ -99,7 +99,7 @@ export default function Home() {
                 </motion.a>
               </Link>
               <motion.a 
-                className="mx-2 hover:text-gray-400" 
+                className="mx-2 hover:text-blueGray-400" 
                 href="mailto:kuhn96@gmail.com" 
                 variants={fadeIn}
                 transition={{ duration: 0.6 }}
