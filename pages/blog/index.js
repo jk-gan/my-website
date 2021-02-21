@@ -83,24 +83,24 @@ const Blog = ({ posts }) => {
 }
 
 export async function getStaticProps() {
-    const fs = require('fs')
+    const { promises: fs } = require('fs')
     const matter = require('gray-matter')
     const uniqid = require('uniqid')
 
-    const files = fs.readdirSync(`${process.cwd()}/posts`, 'utf-8')
+    const files = await fs.readdir(`${process.cwd()}/posts`)
 
-    const posts = files
+    let posts = files
         .filter((fn) => fn.endsWith('.md'))
-        .map((fn) => {
+        .map(async (fn) => {
             const path = `${process.cwd()}/posts/${fn}`
-            const rawContent = fs.readFileSync(path, {
-                encoding: 'utf-8',
-            })
+            const rawContent = await fs.readFile(path, 'utf8')
             const { data } = matter(rawContent)
 
             return { ...data, id: uniqid() }
         })
-        .sort((a, b) => new Date(b.date) - new Date(a.date))
+
+    posts = (await Promise.all(posts))
+      .sort((a, b) => new Date(b.date) - new Date(a.date))
 
     return {
         props: { posts },

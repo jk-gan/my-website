@@ -95,31 +95,20 @@ const BlogPostPage = (props) => {
     }
 
 export const getStaticProps = async (context) => {
-    const fs = require('fs')
-    // const highlight = require('remark-highlight.js')
+    const { promises: fs } = require('fs')
     const matter = require('gray-matter')
 
     const slug = context.params.slug
     const path = `${process.cwd()}/posts/${slug}.md`
 
-    const rawContent = fs.readFileSync(path, {
-        encoding: 'utf-8',
-    })
+    const rawContent = await fs.readFile(path, 'utf8')
 
     const { data, content } = matter(rawContent)
-
-    // const result = await unified()
-    //     .use(markdown)
-    //     .use(mdx)
-    //     .use(highlight)
-    //     .use(html)
-    //     .process(content)
 
     return {
         props: { 
             post: { 
                 ...data,
-                // content: result.toString(),
                 content,
             },
         }
@@ -127,9 +116,9 @@ export const getStaticProps = async (context) => {
 }
 
 export const getStaticPaths = async (context) => {
-    const fs = require('fs')
+    const { promises: fs } = require('fs')
     const path = `${process.cwd()}/posts`
-    const files = fs.readdirSync(path, 'utf-8')
+    const files = await fs.readdir(path)
 
     const markdownFileNames = files
         .filter((fn) => fn.endsWith('.md'))
