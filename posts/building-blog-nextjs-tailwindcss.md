@@ -1,5 +1,5 @@
 ---
-title: "Building a blog with Next.js + Tailwindcss"
+title: "Building a Blog with Next.js + Tailwindcss"
 subtitle: "A guide on building a simple blog from scratch using Next.js and Tailwindcss"
 slug: building-blog-nextjs-tailwindcss
 image: "/building-blog-nextjs-tailwindcss/bg.jpg" # Photo by Jess Bailey on Unsplash
