@@ -44,7 +44,7 @@ const BlogPostPage = (props) => {
         visible: { 
             opacity: 1,
             transition: {
-                duration: 0.5,
+                duration: 0.25,
                 ease: "easeInOut",
             }
         },

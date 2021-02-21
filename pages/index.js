@@ -64,7 +64,7 @@ export default function Home() {
           >
             Full stack developer · Elixir · Rust · React
           </motion.p>
-          <motion.div className="flex items-center mt-3 text-blueGray-300 divide-x" variants={fadeIn} initial="hidden" animate="visible" transition={{ delayChildren: 0.25, staggerChildren: 0.27, ease: "easeInOut" }}>
+          <motion.div className="flex items-center mt-3 text-blueGray-300 divide-x" variants={fadeIn} initial="hidden" animate="visible" transition={{ delayChildren: 0.2, staggerChildren: 0.25, ease: "easeInOut" }}>
             <div>
               <motion.a 
                 href="https://github.com/jk-gan"

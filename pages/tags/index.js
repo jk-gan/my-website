@@ -18,7 +18,7 @@ const Blog = (props) => {
     visible: { 
       opacity: 1,
       transition: {
-        duration: 0.7,
+        duration: 0.6,
         ease: "easeInOut",
       }
     },
@@ -51,7 +51,7 @@ const Blog = (props) => {
                 </motion.h1>
               </div>
               <div>
-                <motion.ul className="mt-8" variants={fadeIn} initial="hidden" animate="visible" transition={{ delayChildren: 0.2, staggerChildren: 0.2 }}>
+                <motion.ul className="mt-8" variants={fadeIn} initial="hidden" animate="visible" transition={{ delayChildren: 0.15, staggerChildren: 0.15 }}>
                     {props.tags.map((tag, _index) => {
                         return (
                             <motion.li className="mb-4" key={tag} variants={fadeInEaseInOut}>
