@@ -1,5 +1,6 @@
 ---
 title: "Building a blog with Next.js + Tailwindcss"
+subtitle: "A guide on building a simple blog from scratch using Next.js and Tailwindcss"
 slug: building-blog-nextjs-tailwindcss
 image: "/building-blog-nextjs-tailwindcss/bg.jpeg" # Photo by Jess Bailey on Unsplash
 date: "2021-02-21"
@@ -336,4 +337,4 @@ The code block in [http://localhost:3000/blog/foo-bar](http://localhost:3000/blo
 
 That completes this simple guide on building a blog with Next.js and Tailwindcss. Now you are ready to show the world what you've done by deploying this blog using [Vercel](https://vercel.com/) or [Netlify](https://www.netlify.com/). Cheer!
 
-You can check the source codes [here](https://github.com/jk-gan/nextjs-blog).
+You can check the [source codes here](https://github.com/jk-gan/nextjs-blog).
