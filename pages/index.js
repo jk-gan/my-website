@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGithub, faLinkedin, faTwitter } from '@fortawesome/free-brands-svg-icons'
 
 export default function Home() {
-  const url = "https://jk-gan.vercel.app"
+  const url = "https://jkgan.com"
   const title = "Gan Jun Kai"
   const description = "Jun Kai writes about software engineering and programming"
 
@@ -33,7 +33,7 @@ export default function Home() {
         <title>Gan Jun Kai's website</title>
 
         <meta property="og:url" content={url} />
-        <meta property="og:image" content="https://jk-gan.vercel.app/bg.jpeg" />
+        <meta property="og:image" content="https://jkgan.com/bg.jpeg" />
         <meta property="og:type" content="website" />
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />

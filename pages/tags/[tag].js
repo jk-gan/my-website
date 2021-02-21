@@ -3,26 +3,27 @@ import Link from 'next/link'
 import dayjs from 'dayjs'
 import { motion } from 'framer-motion'
 
-const Blog = ({ posts }) => {
-  const url = "https://jkgan.com/blog"
-  const title = "Blog - Gan Jun Kai"
-  const description = "Jun Kai writes about software engineering and programming"
+export default function TagPage(props) {
+    const { posts, currentTag } = props
+    const url = "https://jkgan.com/blog"
+    const description = ""
+    const title = currentTag
 
-  const fadeIn = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1 }
-  }
-
-  const fadeInEaseInOut = {
-    hidden: { opacity: 0 },
-    visible: { 
-      opacity: 1,
-      transition: {
-        duration: 0.7,
-        ease: "easeInOut",
+    const fadeIn = {
+        hidden: { opacity: 0 },
+        visible: { opacity: 1 }
       }
-    },
-  }
+    
+      const fadeInEaseInOut = {
+        hidden: { opacity: 0 },
+        visible: { 
+          opacity: 1,
+          transition: {
+            duration: 0.7,
+            ease: "easeInOut",
+          }
+        },
+      }
 
   return (
     <>
@@ -30,7 +31,7 @@ const Blog = ({ posts }) => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta charSet="utf-8" />
         <meta name="description" content={description} />
-        <title>Articles - Gan Jun Kai</title>
+        <title>{`${currentTag} - Gan Jun Kai`}</title>
 
         <meta property="og:url" content={url} />
         <meta property="og:image" content="https://jkgan.com/bg.jpeg" />
@@ -47,7 +48,7 @@ const Blog = ({ posts }) => {
                   initial="hidden"
                   animate="visible"
                 >
-                  Articles
+                  {`#${currentTag}`}
                 </motion.h1>
               </div>
               <div>
@@ -82,29 +83,61 @@ const Blog = ({ posts }) => {
   )
 }
 
-export async function getStaticProps() {
+export async function getStaticProps(context) {
     const fs = require('fs')
     const matter = require('gray-matter')
     const uniqid = require('uniqid')
 
+    const tag = context.params.tag
+
     const files = fs.readdirSync(`${process.cwd()}/posts`, 'utf-8')
 
     const posts = files
-        .filter((fn) => fn.endsWith('.md'))
-        .map((fn) => {
+        .filter(fn => fn.endsWith('.md'))
+        .map(fn => {
             const path = `${process.cwd()}/posts/${fn}`
             const rawContent = fs.readFileSync(path, {
                 encoding: 'utf-8',
             })
             const { data } = matter(rawContent)
-
             return { ...data, id: uniqid() }
         })
+        .filter(post => post.tags.includes(tag))
         .sort((a, b) => new Date(b.date) - new Date(a.date))
 
     return {
-        props: { posts },
+        props: { posts, currentTag: tag },
     }
 }
 
-export default Blog
+export async function getStaticPaths(context) {
+    const fs = require('fs')
+    const matter = require('gray-matter')
+
+    const files = fs.readdirSync(`${process.cwd()}/posts`, 'utf-8')
+
+    const tags = files
+        .filter((fn) => fn.endsWith('.md'))
+        .flatMap((fn) => {
+            const path = `${process.cwd()}/posts/${fn}`
+            const rawContent = fs.readFileSync(path, {
+                encoding: 'utf-8',
+            })
+            const { data } = matter(rawContent)
+            const { tags } = data
+
+            return tags || []
+        })
+        .filter((item, i, arr) => arr.indexOf(item) === i)
+
+    return {
+        paths: tags.map((tag) => {
+            return {
+                params: {
+                    tag,
+                },
+            }
+        }),
+        fallback: false,
+    }
+}

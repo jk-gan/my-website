@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Image from 'next/image'
+import Link from 'next/link'
 import dayjs from 'dayjs'
 import ReactMarkdown from 'react-markdown'
 import { motion } from 'framer-motion'
@@ -33,8 +34,8 @@ const renderers = {
   }
 
 const BlogPostPage = (props) => {
-    const domain = 'https://jk-gan.vercel.app'
-    const { title, slug, date, content, subtitle, image = `${domain}/bg.jpeg` } = props.post
+    const domain = 'https://jkgan.com'
+    const { title, slug, date, tags = [], content, subtitle, image = `${domain}/bg.jpeg` } = props.post
     const url = `${domain}/blog/${slug}`
     const imageURL = image.includes("http") || image.includes("https") ? image : `${domain}/${image}`
 
@@ -68,6 +69,17 @@ const BlogPostPage = (props) => {
                     <div className="mb-5">
                         <h1 className="text-4xl font-semibold mb-2">{title}</h1>
                         <h3 className="opacity-80 text-2xl text-blueGray-500 font-medium mb-1">{subtitle}</h3>
+                        <ul className="flex flex-wrap">
+                            {tags.map((tag) => {
+                            return (
+                                <li key={tag} className="mb-2">
+                                <Link href={`/tags/${tag}`}>
+                                    <a className="text-sm mr-2 py-1 px-2 rounded-xl bg-blueGray-100 hover:bg-blueGray-200">#{tag}</a>
+                                </Link>
+                                </li>
+                            )
+                        })}
+                        </ul>
                         <p className="opacity-80 text-sm text-blueGray-400">{dayjs(date).format('MMMM D, YYYY')}</p>
                     </div>
                     <ReactMarkdown 

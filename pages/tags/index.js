@@ -4,7 +4,7 @@ import dayjs from 'dayjs'
 import { motion } from 'framer-motion'
 
 const Blog = (props) => {
-  const url = "https://jk-gan.vercel.app/blog"
+  const url = "https://jkgan.com/blog"
   const title = "Tags - Gan Jun Kai"
   const description = "Jun Kai writes about software engineering and programming"
 
@@ -33,7 +33,7 @@ const Blog = (props) => {
         <title>Tags - Gan Jun Kai</title>
 
         <meta property="og:url" content={url} />
-        <meta property="og:image" content="https://jk-gan.vercel.app/bg.jpeg" />
+        <meta property="og:image" content="https://jkgan.com/bg.jpeg" />
         <meta property="og:type" content="website" />
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
@@ -56,7 +56,7 @@ const Blog = (props) => {
                         return (
                             <motion.li className="mb-4" key={tag} variants={fadeInEaseInOut}>
                                 <Link href={`/tags/${tag}`}>
-                                    <a className="text-2xl mb-2 font-semibold hover:text-blue-700">#{tag}</a>
+                                    <a className="text-2xl mb-2 font-semibold hover:text-cyan-400">#{tag}</a>
                                 </Link>
                                 {/* <p className="text-base text-gray-500 mb-1">{post.subtitle || '...'}</p>
                                 <p className="text-sm text-gray-400">{dayjs(post.date).format('MMMM D, YYYY')}</p> */}
@@ -74,7 +74,6 @@ const Blog = (props) => {
 export async function getStaticProps() {
     const fs = require('fs')
     const matter = require('gray-matter')
-    const { v4: uuid } = require('uuid')
 
     const files = fs.readdirSync(`${process.cwd()}/posts`, 'utf-8')
 
