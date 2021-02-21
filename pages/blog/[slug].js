@@ -9,7 +9,8 @@ import js from 'react-syntax-highlighter/dist/cjs/languages/prism/javascript'
 import jsx from 'react-syntax-highlighter/dist/cjs/languages/prism/jsx'
 import rust from 'react-syntax-highlighter/dist/cjs/languages/prism/rust';
 import markdown from 'react-syntax-highlighter/dist/cjs/languages/prism/markdown';
-// import elixir from 'react-syntax-highlighter/dist/cjs/languages/prism/elixir';
+import diff from 'react-syntax-highlighter/dist/cjs/languages/prism/diff';
+import elixir from 'react-syntax-highlighter/dist/cjs/languages/prism/elixir';
 import bash from 'react-syntax-highlighter/dist/cjs/languages/prism/bash';
 import tomorrow from 'react-syntax-highlighter/dist/cjs/styles/prism/tomorrow'
 
@@ -18,7 +19,8 @@ SyntaxHighlighter.registerLanguage('jsx', jsx);
 SyntaxHighlighter.registerLanguage('rust', rust);
 SyntaxHighlighter.registerLanguage('bash', bash);
 SyntaxHighlighter.registerLanguage('markdown', markdown);
-// SyntaxHighlighter.registerLanguage('elixir', elixir);
+SyntaxHighlighter.registerLanguage('diff', diff);
+SyntaxHighlighter.registerLanguage('elixir', elixir);
 
 const renderers = {
     image: image => {
