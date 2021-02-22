@@ -108,7 +108,7 @@ Let's see how we can do this. Next.js has a [file-system based router](https://n
 - `./pages/blog/index.js` -> `/blog`
 - `./pages/blog/analytics.js` -> `/blog/analytics`
 
-Nobody want to write a new page, e.g. `./pages/blog/hello-world.js`, every time when we have a new article. Therefore, we need a more scalable way to handle this. Since the article page's logic is the same, we can use Next.js [Dynamic Routes](https://nextjs.org/docs/routing/dynamic-routes) to handle the same route pattern with single file:
+Nobody wants to write a new page, e.g. `./pages/blog/hello-world.js`, whenever there is a new article. Therefore, we need a more scalable way to handle this. As we know every article page logic is the same, to display the content from the `.md` file, we can use Next.js [Dynamic Routes](https://nextjs.org/docs/routing/dynamic-routes) to handle the same route pattern with the same file:
 - `./pages/blog/[slug].js` -> will match `/blog/1`, `/blog/hello-world`, `/blog/foo-bar`
 
 Let's create both files:
