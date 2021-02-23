@@ -3,7 +3,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 import dayjs from 'dayjs'
 import ReactMarkdown from 'react-markdown'
-import { motion } from 'framer-motion'
 import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter'
 import js from 'react-syntax-highlighter/dist/cjs/languages/prism/javascript'
 import jsx from 'react-syntax-highlighter/dist/cjs/languages/prism/jsx'
@@ -41,17 +40,6 @@ const BlogPostPage = (props) => {
     const url = `${domain}/blog/${slug}`
     const imageURL = image.includes("http") || image.includes("https") ? image : `${domain}/${image}`
 
-    const fadeInEaseInOut = {
-        hidden: { opacity: 0 },
-        visible: { 
-            opacity: 1,
-            transition: {
-                duration: 0.25,
-                ease: "easeInOut",
-            }
-        },
-    }
-
     return (
         <>
             <Head>
@@ -67,7 +55,7 @@ const BlogPostPage = (props) => {
                 <meta property="og:description" content={subtitle} />
             </Head>
             <div className="flex mx-auto mt-16 mb-16 w-11/12 2xl:w-6/12 xl:w-7/12 lg:w-8/12 md:w-10/12">
-                <motion.div className="w-full" variants={fadeInEaseInOut} initial="hidden" animate="visible">
+                <div className="w-full">
                     <div className="mb-5">
                         <h1 className="text-4xl font-semibold mb-2">{title}</h1>
                         <h3 className="opacity-80 text-2xl text-blueGray-500 font-medium mb-1">{subtitle}</h3>
@@ -90,7 +78,7 @@ const BlogPostPage = (props) => {
                         renderers={renderers} 
                         allowDangerousHtml 
                     />
-                </motion.div>
+                </div>
             </div>
         </>
         )

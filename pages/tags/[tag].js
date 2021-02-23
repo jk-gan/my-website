@@ -1,29 +1,12 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import dayjs from 'dayjs'
-import { motion } from 'framer-motion'
 
 export default function TagPage(props) {
     const { posts, currentTag } = props
     const url = "https://jkgan.com/blog"
     const description = ""
     const title = currentTag
-
-    const fadeIn = {
-        hidden: { opacity: 0 },
-        visible: { opacity: 1 }
-      }
-    
-      const fadeInEaseInOut = {
-        hidden: { opacity: 0 },
-        visible: { 
-          opacity: 1,
-          transition: {
-            duration: 0.6,
-            ease: "easeInOut",
-          }
-        },
-      }
 
   return (
     <>
@@ -42,20 +25,13 @@ export default function TagPage(props) {
       <div className="flex container mx-auto mt-16 w-11/12 2xl:w-6/12 xl:w-7/12 lg:w-8/12 md:w-10/12">
           <div className="divide-y-2 w-full">
               <div>
-                <motion.h1 
-                  className="text-left font-bold text-4xl mb-3"
-                  variants={fadeInEaseInOut}
-                  initial="hidden"
-                  animate="visible"
-                >
-                  {`#${currentTag}`}
-                </motion.h1>
+                <h1 className="text-left font-bold text-4xl mb-3">{`#${currentTag}`}</h1>
               </div>
               <div>
-                <motion.ul className="mt-8" variants={fadeIn} initial="hidden" animate="visible" transition={{ delayChildren: 0.15, staggerChildren: 0.15 }}>
+                <ul className="mt-8">
                     {posts.map((post, _index) => {
                         return (
-                            <motion.li className="mb-10" key={post.id} variants={fadeInEaseInOut}>
+                            <li className="mb-10" key={post.id}>
                                 <Link href={`/blog/${post.slug}`}>
                                     <a className="text-2xl mb-2 font-semibold hover:text-cyan-400">{post.title}</a>
                                 </Link>
@@ -72,10 +48,10 @@ export default function TagPage(props) {
                                   })}
                                 </ul>
                                 <p className="text-sm text-blueGray-400">{dayjs(post.date).format('MMMM D, YYYY')}</p>
-                            </motion.li>
+                            </li>
                         )
                     })}
-                </motion.ul>
+                </ul>
               </div>
           </div>
       </div>
