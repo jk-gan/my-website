@@ -4,7 +4,7 @@ import dayjs from 'dayjs'
 
 export default function Blog({ posts }) {
   const url = "https://jkgan.com/blog"
-  const title = "Blog - Gan Jun Kai"
+  const title = "Writings - Gan Jun Kai"
   const description = "Jun Kai writes about software engineering and programming"
 
   return (
@@ -13,7 +13,7 @@ export default function Blog({ posts }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta charSet="utf-8" />
         <meta name="description" content={description} />
-        <title>Articles - Gan Jun Kai</title>
+        <title>Writings - Gan Jun Kai</title>
 
         <meta property="og:url" content={url} />
         <meta property="og:image" content="https://jkgan.com/bg.jpeg" />
@@ -24,7 +24,7 @@ export default function Blog({ posts }) {
       <div className="flex container mx-auto mt-16 w-11/12 2xl:w-6/12 xl:w-7/12 lg:w-8/12 md:w-10/12">
           <div className="divide-y-2 w-full">
               <div>
-                <h1 className="text-left font-bold text-4xl mb-3">Articles</h1>
+                <h1 className="text-left font-bold text-4xl mb-3">Writings</h1>
               </div>
               <div>
                 <ul className="mt-8">
@@ -35,10 +35,10 @@ export default function Blog({ posts }) {
                                     <a className="text-2xl mb-2 font-semibold hover:text-cyan-400">{post.title}</a>
                                 </Link>
                                 <p className="text-base text-blueGray-500 mb-2">{post.subtitle || '...'}</p>
-                                <ul className="flex flex-wrap">
+                                <ul className="flex flex-wrap mb-2">
                                   {post.tags.map((tag) => {
                                     return (
-                                      <li key={tag} className="mb-2">
+                                      <li key={tag}>
                                         <Link href={`/tags/${tag}`}>
                                           <a className="text-sm mr-2 py-1 px-2 rounded-xl bg-blueGray-100 hover:bg-blueGray-200">#{tag}</a>
                                         </Link>
