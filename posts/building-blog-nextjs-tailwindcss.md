@@ -9,7 +9,7 @@ tags: ["guide", "nextjs", "tailwindcss"]
 
 This website is built using [Next.js](https://nextjs.org/) and [Tailwindcss](https://tailwindcss.com/) and it's been a blast. I want to write down what I've learned and what I did. So in this article, we're gonna build a simple blog website. This website will allow user to write articles in Markdown.
 
-Next.js is a popular [**React**](https://reactjs.org/) framework and it supports [Static Generation](https://nextjs.org/docs/basic-features/pages#static-generation-recommended) which is perfect for our use case. For those who don't know, Static Generation is a process to generate the static website at **build time**. A traditional website has to be rebuilt for every visit. Static websites are built before they go live, and so instead of building 1 million times for 1 million visitors, they build once. This website will then be reused on each request and can be cached by a CDN for performance.
+Next.js is a popular [**React**](https://reactjs.org/) framework and it supports [Static Generation](https://nextjs.org/docs/basic-features/pages#static-generation-recommended) which is perfect for our use case. For those who don't know, Static Generation is a process to generate the static website at **build time**. Normally, a traditional website has to be rebuilt for every visit. Static websites are built before they go live, and so instead of building 1 million times for 1 million visitors, they build once. This website will then be reused on each request and can be cached by a CDN for performance.
 
 ### Project Setup
 This is the environment we use in this guide:
