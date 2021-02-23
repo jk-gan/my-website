@@ -1,8 +1,8 @@
 import Head from 'next/head'
 import Link from 'next/link'
 
-const Blog = (props) => {
-  const url = "https://jkgan.com/blog"
+export default function Tags(props) {
+  const url = "https://jkgan.com/tags"
   const title = "Tags - Gan Jun Kai"
   const description = "Jun Kai writes about software engineering and programming"
 
@@ -33,8 +33,6 @@ const Blog = (props) => {
                                 <Link href={`/tags/${tag}`}>
                                     <a className="text-2xl mb-2 font-semibold hover:text-cyan-400">#{tag}</a>
                                 </Link>
-                                {/* <p className="text-base text-gray-500 mb-1">{post.subtitle || '...'}</p>
-                                <p className="text-sm text-gray-400">{dayjs(post.date).format('MMMM D, YYYY')}</p> */}
                             </li>
                         )
                     })}
@@ -70,5 +68,3 @@ export async function getStaticProps() {
         props: { tags },
     }
 }
-
-export default Blog

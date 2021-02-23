@@ -2,7 +2,7 @@ import Head from 'next/head'
 import Link from 'next/link'
 import dayjs from 'dayjs'
 
-const Blog = ({ posts }) => {
+export default function Blog({ posts }) {
   const url = "https://jkgan.com/blog"
   const title = "Blog - Gan Jun Kai"
   const description = "Jun Kai writes about software engineering and programming"
@@ -82,5 +82,3 @@ export async function getStaticProps() {
         props: { posts },
     }
 }
-
-export default Blog

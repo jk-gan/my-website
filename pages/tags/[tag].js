@@ -4,7 +4,7 @@ import dayjs from 'dayjs'
 
 export default function TagPage(props) {
     const { posts, currentTag } = props
-    const url = "https://jkgan.com/blog"
+    const url = `https://jkgan.com/tags/${currentTag}`
     const description = ""
     const title = currentTag
 

@@ -34,7 +34,7 @@ const renderers = {
     }
   }
 
-const BlogPostPage = (props) => {
+export default function BlogPostPage(props) {
     const domain = 'https://jkgan.com'
     const { title, slug, date, tags = [], content, subtitle, image = `${domain}/bg.jpeg` } = props.post
     const url = `${domain}/blog/${slug}`
@@ -84,7 +84,7 @@ const BlogPostPage = (props) => {
         )
     }
 
-export const getStaticProps = async (context) => {
+export async function getStaticProps(context) {
     const { promises: fs } = require('fs')
     const matter = require('gray-matter')
 
@@ -105,7 +105,7 @@ export const getStaticProps = async (context) => {
     }
 }
 
-export const getStaticPaths = async (context) => {
+export async function getStaticPaths(context) {
     const { promises: fs } = require('fs')
     const path = `${process.cwd()}/posts`
     const files = await fs.readdir(path)
@@ -125,5 +125,3 @@ export const getStaticPaths = async (context) => {
         fallback: false,
     }
 }
-
-export default BlogPostPage
