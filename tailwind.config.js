@@ -22,6 +22,7 @@ module.exports = {
       typography: (theme) => ({
         DEFAULT: {
           css: {
+            fontSize: '1.875rem',
             a: { 
               textDecoration: "none",
               borderBottom: `2px solid ${theme("colors.cyan.400")}`,

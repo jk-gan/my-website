@@ -1,4 +1,5 @@
 import Header from '@components/Header'
+import Copyright from '@components/Copyright'
 
 import '../styles/globals.css'
 
@@ -7,6 +8,7 @@ function MyApp({ Component, pageProps }) {
     <>
       <Header />
       <Component {...pageProps} />
+      {/* <Copyright /> */}
     </>
   )
 }
