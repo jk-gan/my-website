@@ -57,7 +57,7 @@ export default function BlogPostPage(props) {
             <div className="flex mx-auto mt-16 mb-16 w-11/12 2xl:w-5/12 xl:w-6/12 lg:w-8/12 md:w-10/12">
                 <div className="w-full">
                     <div className="mb-5">
-                        <h1 className="text-4xl font-semibold mb-1">{title}</h1>
+                        <h1 className="text-4xl font-semibold">{title}</h1>
                         <h3 className="opacity-80 text-2xl text-blueGray-500 font-normal mb-2">{subtitle}</h3>
                         <ul className="flex flex-wrap">
                             {tags.map((tag) => {

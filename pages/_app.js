@@ -8,7 +8,7 @@ function MyApp({ Component, pageProps }) {
     <>
       <Header />
       <Component {...pageProps} />
-      {/* <Copyright /> */}
+      <Copyright />
     </>
   )
 }

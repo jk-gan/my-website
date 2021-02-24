@@ -25,13 +25,10 @@ export default function Header() {
                     </Link>
                 </li>
                 <li className="inline mb-2 sm:mb-0">
-                    <a className="link" href="mailto:kuhn96@gmail.com">Contact</a>
-                </li>
-                {/* <li className="inline mr-8">
                     <Link href="/contact">
                         <a className="link hover:text-cyan-400">Contact</a>
                     </Link>
-                </li> */}
+                </li>
             </ul>
         </header>
     )
