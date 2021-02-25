@@ -13,4 +13,4 @@ Some of the websites load faster noticeably with this strict mode. However, I'm 
 
 Nowadays, Internet is inundated with all the creepy ads which are powered by hidden trackers. People may not even think twice about the creepiness of the ads. The shoes you searched for just now are following you everywhere from Youtube ads to Facebook ads. One of the best things we can do to protect ourselves is to use a quality tracker blocker. I use Firefox.
 
-*Note: Safari also [enhances its Intelligent Tracking Prevention](https://appleinsider.com/articles/20/06/22/safari-now-blocks-google-analytics-on-sites-new-privacy-report-feature-shows) recently.*
+*PS: I'm also using [Facebook Container](https://www.mozilla.org/en-US/firefox/facebookcontainer/) and [Firefox Relay](https://relay.firefox.com/) to protect my privacy.*
