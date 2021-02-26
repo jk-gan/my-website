@@ -15,4 +15,6 @@ Nowadays, Internet is inundated with all the creepy ads which are powered by hid
 
 I believe privacy is a fundamental human right. One of the best things we can do to protect ourselves is to use a quality tracker blocker. I use Firefox.
 
+> "Privacy - like security - should be expected, not something that users have to enable." -- [Nick Bradbury](https://nick.typepad.com/blog/2012/03/girls-around-me-shows-why-privacy-shouldnt-be-an-option.html)
+
 *PS: I'm also using [Facebook Container](https://www.mozilla.org/en-US/firefox/facebookcontainer/), [Firefox Relay](https://relay.firefox.com/) and [1.1.1.1](https://1.1.1.1/) to protect my privacy.*
