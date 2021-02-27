@@ -57,9 +57,9 @@ export default function BlogPostPage(props) {
             <div className="flex mx-auto mt-16 mb-16 w-11/12 2xl:w-5/12 xl:w-6/12 lg:w-8/12 md:w-10/12">
                 <div className="w-full">
                     <div className="mb-5">
-                        <h1 className="text-4xl font-semibold">{title}</h1>
-                        <h3 className="opacity-80 text-2xl text-blueGray-500 font-normal mb-2">{subtitle}</h3>
-                        <ul className="flex flex-wrap">
+                        <h1 className="text-4xl font-semibold text-center mb-3">{title}</h1>
+                        {/* <h3 className="opacity-80 text-xl text-blueGray-500 font-normal mb-3 text-center">{subtitle}</h3> */}
+                        <ul className="flex flex-wrap justify-center">
                             {tags.map((tag) => {
                             return (
                                 <li key={tag} className="mb-2">
@@ -70,7 +70,7 @@ export default function BlogPostPage(props) {
                             )
                         })}
                         </ul>
-                        <p className="opacity-80 text-sm text-blueGray-400">{dayjs(date).format('MMMM D, YYYY')}</p>
+                        <p className="opacity-80 text-sm text-blueGray-400 text-center">{dayjs(date).format('MMMM D, YYYY')}</p>
                     </div>
                     <ReactMarkdown 
                         className="prose prose-lg max-w-none mt-10" 

@@ -1,5 +1,6 @@
 ---
 title: "I switched to Firefox ETP strict mode"
+subtitle: "It's all about privacy."
 slug: i-switched-to-firefox-etp-strict-mode
 tags: ["firefox", "privacy"]
 image: "i-switched-to-firefox-etp-strict-mode/blocked-trackers.png"
