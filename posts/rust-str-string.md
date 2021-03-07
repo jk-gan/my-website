@@ -188,6 +188,6 @@ According to [Rust documentation](https://doc.rust-lang.org/std/string/struct.St
 Therefore, when working with string, it makes sense to create function expecting `&str`s so it will support both `&str` and `String` by default.
 
 ### Which one should I use?
-Generally, if you don't want to own or mutate the string value, you should be using `&str`, and vise versa.
+`String` is a mutable and owned while `str` is immutable. Generally, if you don't want to own or mutate the string value, you should be using `&str`, and vise versa.
 
 *For deeper explanation of this topic, I recommend this [article](https://fasterthanli.me/articles/working-with-strings-in-rust) from [@fasterthanlime](https://twitter.com/fasterthanlime).*
