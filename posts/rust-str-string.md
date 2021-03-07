@@ -18,7 +18,7 @@ Here we have a function expecting a `String` as parameter. Let's call this funct
 let world = "world";
 greeting(world);
 ```
-You're probably happy with this code. With so many experiences in programming, what could go wrong with this "Hello world" program? Well, the compiler disagrees with us:
+We're happy with this code. With so many experiences in programming, what could go wrong with this "Hello world" program? Well, the compiler disagrees with us:
 ```bash
 error[E0308]: mismatched types
  --> src/main.rs:7:14
@@ -49,7 +49,7 @@ greeting(world);
 Hello, world
 ```
 
-Nice! It is running now. But what is `String` and `str`?
+Nice! The compiler is happy now and output "Hello, world". But what is `String` and `str`?
 
 ### What is `String`?
 There are 2 main string types in Rust, `str` and `String`. The `String` type is provided by Rust's standard library. It is actually just a [wrapper of `Vec<u8>`](https://github.com/rust-lang/rust/blob/master/library/alloc/src/string.rs#L272-L281) with the guarantees of UTF-8 encoding.
@@ -131,31 +131,33 @@ A `&str` is made up of **2** components:
 - pointer to heap-allocated buffer
 - length
 
-We can create a string slice by doing so:
+We can create a **string slice** by doing so:
 ```rust
-let foo_bar = "foo bar".to_string(); // `String`
-let bar = &foo_bar[4..]; // `&str`
+let foo_bar = "foo bar".to_string();
+let bar = &foo_bar[4..]; // bar is string slice from `foo_bar` start from index 4 to the last byte of `foo_bar`
 ```
 
 Here's what it looks like in memory:
 
 ![string slice in memory](/rust-str-string/string-slice.png)
 
-This is how we declare a string literal:
+You can read more about string slice [here](https://doc.rust-lang.org/book/ch04-03-slices.html).
+
+Next, we have a **string literal**:
 ```rust
 let foo = "foo";
 
 // with an explicit type annotation
 let foo: &'static str = "foo";
 ```
-The `foo` is `'static` because string literal is stored directly in the final binary, and so will be valid for the `'static` duration. It’s a slice pointing to that specific point of the binary. This is also why string literals are immutable; `&str` is an immutable reference.
+The `foo` is `'static` because **string literal** is stored directly in the final binary, and so will be valid for the `'static` duration. It’s a slice pointing to that specific point of the binary. This is also why string literals are **immutable**; `&str` is an **immutable reference**.
 
 Here’s what a string literal looks like in memory:
 
 ![str in memory](/rust-str-string/string-literal.png)
 
 ### Bonus: you can pass `&String` to a function expecting `&str`
-It's quite common when you have a function expecting a `&str` because you don't want to own the value, but the string you want to pass in is a `String`. All you have to do is pass the reference of the `String` (`&String`). `String`s will coerce into `&str` with an `&`:
+It's quite common when you have a function expecting a `&str` because you don't want to own the value, but the string you want to pass in is a `String`. This is actually very easy to solve by passing the reference of the `String` (`&String`). `String`s will coerce into `&str` with an `&`:
 ```rust
 // because `String` implement `Deref<Target=str>`
 // the source code at here: https://github.com/rust-lang/rust/blob/master/library/alloc/src/string.rs#L2135-L2143
