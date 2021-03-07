@@ -2,6 +2,7 @@
 title: "Rust's String and str"
 subtitle: "Which one should I use?"
 slug: rust-str-string
+image: "/rust-str-string/bg.jpg" # Photo by Steve Johnson on Unsplash
 tags: ["rust"]
 date: "2021-03-07"
 ---
@@ -179,4 +180,4 @@ According to [Rust documentation](https://doc.rust-lang.org/std/string/struct.St
 >This conversion is very inexpensive, and so generally, functions will accept `&str`s as arguments unless they need a `String` for some specific reason.
 
 ### Which one should I use?
-Generally, if you don't want to owned or mutate the string value, you should be using `&str`, and vise versa.
+Generally, if you don't want to own or mutate the string value, you should be using `&str`, and vise versa.
