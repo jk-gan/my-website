@@ -178,6 +178,9 @@ assert!(11, count_the_len(&hello));
 ```
 According to [Rust documentation](https://doc.rust-lang.org/std/string/struct.String.html#deref), 
 >This conversion is very inexpensive, and so generally, functions will accept `&str`s as arguments unless they need a `String` for some specific reason.
+Therefore, when working with string, it makes sense to create function expecting `&str`s so it will support both `&str` and `String` by default.
 
 ### Which one should I use?
 Generally, if you don't want to own or mutate the string value, you should be using `&str`, and vise versa.
+
+*For deeper explanation of this topic, I recommend this [article](https://fasterthanli.me/articles/working-with-strings-in-rust) from [@fasterthanlime](https://twitter.com/fasterthanlime).*
