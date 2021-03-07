@@ -1,6 +1,6 @@
 ---
 title: "Rust's String and str"
-subtitle: "This is the top 1 Rust question on Stack Overflow"
+subtitle: "This is one of the top Rust question on Stack Overflow"
 slug: rust-str-string
 image: "/rust-str-string/bg.jpg" # Photo by Steve Johnson on Unsplash
 tags: ["rust"]
