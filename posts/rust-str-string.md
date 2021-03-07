@@ -127,11 +127,11 @@ According to [Rust documentation](https://doc.rust-lang.org/std/primitive.str.ht
 >The `str` type, also called a 'string slice', is the most primitive string type. It is usually seen in its borrowed form, `&str`. It is also the type of string literals, `&'static str`.
 >String slices are always valid UTF-8.
 
-#### String slice
 A `&str` is made up of **2** components: 
 - pointer to heap-allocated buffer
 - length
 
+#### String slice
 We can create **string slice** using `[starting_index..ending_index]` syntax, where `starting_index` is the first position in the slice and `ending_index` is one more than the last position in the slice:
 ```rust
 let foo_bar = "foo bar".to_string();
@@ -142,10 +142,12 @@ Here's what it looks like in memory:
 
 ![string slice in memory](/rust-str-string/string-slice.png)
 
-The `bar` don't have capacity in the stack because it’s just a reference to a portion of the `foo_bar`. You can read more about string slice [here](https://doc.rust-lang.org/book/ch04-03-slices.html).
+The `bar` is just a reference to a portion of the `foo_bar`. 
+
+You can read more about string slice [here](https://doc.rust-lang.org/book/ch04-03-slices.html).
 
 #### String literal
-Next, we have a **string literal**. The way we declare a **string literal** is the same as how we declare a string variable is other languages:
+Next, we have **string literal**. The way we declare a **string literal** is the same as how we declare a string variable in other languages:
 ```rust
 let foo = "foo";
 ```
