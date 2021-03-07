@@ -127,11 +127,12 @@ According to [Rust documentation](https://doc.rust-lang.org/std/primitive.str.ht
 >The `str` type, also called a 'string slice', is the most primitive string type. It is usually seen in its borrowed form, `&str`. It is also the type of string literals, `&'static str`.
 >String slices are always valid UTF-8.
 
+#### String slice
 A `&str` is made up of **2** components: 
 - pointer to heap-allocated buffer
 - length
 
-We can create a **string slice** by doing so:
+We can create **string slice** using `[starting_index..ending_index]` syntax, where `starting_index` is the first position in the slice and `ending_index` is one more than the last position in the slice:
 ```rust
 let foo_bar = "foo bar".to_string();
 let bar = &foo_bar[4..]; // bar is string slice from `foo_bar` start from index 4 to the last byte of `foo_bar`
@@ -141,20 +142,22 @@ Here's what it looks like in memory:
 
 ![string slice in memory](/rust-str-string/string-slice.png)
 
-You can read more about string slice [here](https://doc.rust-lang.org/book/ch04-03-slices.html).
+The `bar` don't have capacity in the stack because it’s just a reference to a portion of the `foo_bar`. You can read more about string slice [here](https://doc.rust-lang.org/book/ch04-03-slices.html).
 
-Next, we have a **string literal**:
+#### String literal
+Next, we have a **string literal**. The way we declare a **string literal** is the same as how we declare a string variable is other languages:
 ```rust
 let foo = "foo";
-
-// with an explicit type annotation
+```
+The `foo` variable with an explicit type annotation would be:
+```rust
 let foo: &'static str = "foo";
 ```
 The `foo` is `'static` because **string literal** is stored directly in the final binary, and so will be valid for the `'static` duration. It’s a slice pointing to that specific point of the binary. This is also why string literals are **immutable**; `&str` is an **immutable reference**.
 
 Here’s what a string literal looks like in memory:
 
-![str in memory](/rust-str-string/string-literal.png)
+![string literal in memory](/rust-str-string/string-literal.png)
 
 ### Bonus: you can pass `&String` to a function expecting `&str`
 It's quite common when you have a function expecting a `&str` because you don't want to own the value, but the string you want to pass in is a `String`. This is actually very easy to solve by passing the reference of the `String` (`&String`). `String`s will coerce into `&str` with an `&`:
