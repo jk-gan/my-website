@@ -3,6 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import dayjs from 'dayjs'
 import ReactMarkdown from 'react-markdown'
+import gfm from 'remark-gfm'
 import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter'
 import js from 'react-syntax-highlighter/dist/cjs/languages/prism/javascript'
 import jsx from 'react-syntax-highlighter/dist/cjs/languages/prism/jsx'
@@ -75,6 +76,7 @@ export default function BlogPostPage(props) {
                     <ReactMarkdown 
                         className="prose prose-lg max-w-none mt-10" 
                         children={content} 
+                        plugins={[gfm]}
                         renderers={renderers} 
                         allowDangerousHtml 
                     />
