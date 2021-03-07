@@ -6,9 +6,7 @@ tags: ["rust"]
 date: "2021-03-07"
 ---
 
-If you're new to **Rust**, you probably would be confused by the string type in the language. There are 2 main string types in Rust, `str` and `String`.
-
-Let's take a first look on probably the first error you will face when building your first Rust program:
+If you are new to Rust, chances are you would be confused by Rust's different string types. Let's take a look at probably the first error you will face when building your first Rust program:
 ```rust
 fn greeting(object: String) {
     println!("Hello, {}", object);
@@ -19,7 +17,7 @@ Here we have a function expecting a `String` as parameter. Let's call this funct
 let world = "world";
 greeting(world);
 ```
-You're probably happy with this code. With so many experiences in programming, what could go wrong with this "Hello world" program? Well, the compiler is mad on you 😰:
+You're probably happy with this code. With so many experiences in programming, what could go wrong with this "Hello world" program? Well, the compiler disagrees with us:
 ```bash
 error[E0308]: mismatched types
  --> src/main.rs:7:14
@@ -36,7 +34,7 @@ For more information about this error, try `rustc --explain E0308`.
 error: could not compile `learn`
 ```
 
-So what we did was passing something looks like a string (`&str`) but not a real string value into a function that is expecting a `String`. Luckily, the compiler show us this can be fixed by using `to_string()` function. Let's try it:
+So what we did was passing something looks like a string (`&str`) but not a real string value into a function that is expecting a `String`. Luckily, the compiler shows us this can be fixed by using `to_string()` function. Let's try it:
 
 ```rust
 let world = "world".to_string();
@@ -53,7 +51,7 @@ Hello, world
 Nice! It is running now. But what is `String` and `str`?
 
 ### What is `String`?
-The `String` type is provided by Rust's standard library. It is actually just a [wrapper of `Vec<u8>`](https://github.com/rust-lang/rust/blob/master/library/alloc/src/string.rs#L272-L281) with the guarantees of UTF-8 encoding.
+There are 2 main string types in Rust, `str` and `String`. The `String` type is provided by Rust's standard library. It is actually just a [wrapper of `Vec<u8>`](https://github.com/rust-lang/rust/blob/master/library/alloc/src/string.rs#L272-L281) with the guarantees of UTF-8 encoding.
 
 `String` is:
 - heap-allocated
